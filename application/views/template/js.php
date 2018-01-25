@@ -23,5 +23,8 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/template/dist/js/app.min.js') ?>" type="text/javascript"></script>
 <!-- DataTables -->
-<script src="<?php echo base_url('assets/template/plugins/datatables/datatables.net/js/jquery.dataTables.min.js') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('assets/template/plugins/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>" type="text/javascript"></script>
+<!-- <script src="<?php echo base_url('assets/template/plugins/datatables/datatables.net/js/jquery.dataTables.min.js') ?>" type="text/javascript"></script> -->
+<!-- <script src="<?php echo base_url('assets/template/plugins/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>" type="text/javascript"></script> -->
+<!-- DataTables -->
+<script src="<?php echo base_url('assets/template/plugins/datatables/DataTables/js/jquery.dataTables.min.js') ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/template/plugins/datatables/DataTables/js/dataTables.bootstrap.min.js') ?>" type="text/javascript"></script>

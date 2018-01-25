@@ -51,8 +51,16 @@
 
                 </ul>
             </li>
-            <li><a href="<?php echo site_url('pangkat') ?>"><i class="fa fa-book"></i> Pangkat</a></li>
-            <li><a href="<?php echo site_url('jabatan') ?>"><i class="fa fa-book"></i> Jabatan</a></li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user">
+                    </i> <span>Penggajian</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo site_url('tunjangan') ?>"><i class="fa fa-circle-o"></i> Tunjangan</a></li>
+                </ul>
+            </li>
             <!--
             <li><a href="#"><i class="fa fa-book"></i> Documentation</a></li>
             <li class="header">LABELS</li>

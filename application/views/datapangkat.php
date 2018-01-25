@@ -27,7 +27,7 @@ $this->load->view('template/sidebar');
                     <tr>
                         <th style="width:13%;">Kode Pangkat</th>
                         <th>Nama Pangkat</th>
-                        <th>Gaji Pokok</th>
+                        <!-- <th>Gaji Pokok</th> -->
                         <th style="width:155px;">Action</th>
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@ $this->load->view('template/sidebar');
                 <tr>
                     <th>Kode Pangkat</th>
                     <th>Nama Pangkat</th>
-                    <th>Gaji Pokok</th>
+                    <!-- <th>Gaji Pokok</th> -->
                     <th>Action</th>
                 </tr>
                 </tfoot>
@@ -134,6 +134,7 @@ function edit_pangkat(kdPangkat)
 
             $('[name="kdPangkat"]').val(data.kdPangkat);
             $('[name="namaPangkat"]').val(data.namaPangkat);
+            $('[name="gajiPokok"]').val(data.gajiPokok);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Pangkat'); // Set title to Bootstrap modal title
 

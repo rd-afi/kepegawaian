@@ -3,17 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class datapegawai extends CI_Controller {
 
-	public function index()
-	{
+	function __construct(){
+		parent::__construct();
+		$this->load->library('datatables');
+		$this->load->model('m_data');
+	}
+
+	public function index(){
 		$data['data'] = $this->m_data->ambil_data()->result();
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
 		$this->load->view('datapegawai.php',$data);
-	}
-
-	function __construct(){
-		parent::__construct();
-		$this->load->model('m_data');
 	}
 
 	function tambah(){
@@ -105,6 +105,17 @@ class datapegawai extends CI_Controller {
 		$where = array('nip' => $nip);
 		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
 		$this->load->view('detailpegawai',$data);
+	}
+
+	function report($nip){
+		$this->load->library('pdf');
+
+		$where = array('nip' => $nip);
+		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
+
+		$this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan.pdf";
+    $this->pdf->load_view('printdetailpegawai', $data);
 	}
 
 

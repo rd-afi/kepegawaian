@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class auth extends CI_Controller {
 
 	function __construct(){
-		parent::__construct();		
+		parent::__construct();
 		$this->load->model('m_login');
- 
+
 	}
 
 	public function index()
 	{
 		$this->load->view('login');
 	}
-        
+
 	public function login()
 	{
 		$username = $this->input->post('username');
@@ -22,29 +22,21 @@ class Auth extends CI_Controller {
 			'username' => $username,
 			'password' => md5($password)
 		);
-
 		$cek = $this->m_login->cek_login("user",$where);
-		if($cek -> num_rows() > 0){
-			foreach($cek->result() as $data){
-				$sess_data['username'] = $username;
-				$sess_data['role'] = $data->role;
-				$sess_data['status'] = "login";
-				$this->session->set_userdata($sess_data);
-			}
-			if($this->session->userdata('role') == 'administrator')
-			{
-				redirect('dashboard');
-			}
-			elseif($this->session->userdata('role') == 'buyer')
-			{
-				redirect('buyer');
-			}
+		if($cek > 0){
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login"
+				);
+			$this->session->set_userdata($data_session);
+
+			redirect(base_url("dashboard"));
+
 		}else{
 			echo "Username dan password salah !";
 		}
-
 	}
-    
+
     public function logout()
 	{
 		$this->session->sess_destroy();

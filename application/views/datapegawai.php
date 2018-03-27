@@ -31,8 +31,8 @@ $this->load->view('template/sidebar');
           <table class="table table-striped table-bordered" id="myTable">
             <thead>
               <tr>
-                <th>NIP</th>
-                <th>Nama Pegawai</th>
+                <th>No</th>
+                <th>Username</th>
                 <th>Pangkat</th>
                 <th>TMT</th>
                 <th>Jabatan</th>

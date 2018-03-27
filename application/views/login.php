@@ -27,7 +27,7 @@
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Silahkan masuk</p>
-                <form action="<?php echo site_url('auth/login') ?>" method="post">
+                <form action="<?php echo site_url('login/aksi_login') ?>" method="post">
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" name="username" placeholder="Username"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

@@ -22,7 +22,7 @@ $this->load->view('template/sidebar');
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <table id="table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th style="width:13%;">ID</th>

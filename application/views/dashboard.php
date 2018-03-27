@@ -20,7 +20,7 @@ $this->load->view('template/sidebar');
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>SELAMAT DATANG</h1>
+    <h1>SELAMAT DATANG, <?php echo $this->session->userdata("username"); ?></h1>
     <ol class="breadcrumb">
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     </ol>
@@ -35,14 +35,34 @@ $this->load->view('template/sidebar');
         <div class="clearfix visible-sm-block"></div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Total Pegawai Terdaftar</span>
-                    <span class="info-box-number"><?php echo $jumPegawai; ?></span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <span class="info-box-icon bg-yellow">
+                <i class="ion ion-ios-people"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Pegawai Terdaftar</span>
+                <h3><?php echo $jumPegawai; ?></h3>
+              </div><!-- /.info-box-content -->
+            </div>
+          </div><!-- /.info-box -->
         </div><!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <span class="info-box-icon bg-aqua">
+                <i class="ion ion-ios-people"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Akun Terdaftar</span>
+                <h3><?php echo $jumAkun; ?></h3>
+              </div><!-- /.info-box-content -->
+            </div>
+          </div><!-- /.info-box -->
+        </div><!-- /.col -->
+
+
     </div><!-- /.row -->
 
 

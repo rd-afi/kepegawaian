@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>Kepegawaian</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- Sweetalert -->
+        <link href="<?php echo base_url('assets/template/plugins/sweetalert/src/sweetalert.css') ?>" rel="stylesheet" type="text/css" />
         <!-- Bootstrap 3.3.2 -->
         <link href="<?php echo base_url('assets/template/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->

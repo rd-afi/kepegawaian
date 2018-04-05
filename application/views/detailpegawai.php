@@ -35,7 +35,8 @@ $this->load->view('template/sidebar');
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->nip; ?>"><i class="glyphicon glyphicon-trash"></i> Hapus Data</a>
+                      <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->nip; ?>"
+                        onclick="javascript: return confirm('Anda yakin hapus ?')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                     </li>
                     <li class="divider"></li>
                     <li>

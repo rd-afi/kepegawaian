@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2018 at 05:33 PM
+-- Generation Time: Apr 09, 2018 at 05:28 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -79,20 +79,20 @@ CREATE TABLE `pangkat` (
 --
 
 INSERT INTO `pangkat` (`kdPangkat`, `namaPangkat`) VALUES
-(1, 'Pembina Utama Muda, IV/c'),
-(2, 'Pembina Tk.I, IV/b'),
-(3, 'Pembina, IV/a'),
-(4, 'Penata Tk.I, III/d'),
-(5, 'Penata, III/c'),
-(6, 'Penata Muda Tk.I, III/b'),
-(7, 'Penata Muda, III/a'),
-(8, 'Pengatur Tk.I, II/d'),
-(9, 'Pengatur, II/c'),
-(10, 'Pengatur Muda Tk.I, II/b'),
-(11, 'Pengatur Muda, II/a'),
-(12, 'Juru Tk.I, I/d'),
+(12, 'Juru Muda Tk.I, I/b'),
 (13, 'Juru, I/c'),
-(14, 'Juru Muda Tk.I, I/b');
+(14, 'Juru Tk.I, I/d'),
+(21, 'Pengatur Muda, II/a'),
+(22, 'Pengatur Muda Tk.I, II/b'),
+(23, 'Pengatur, II/c'),
+(24, 'Pengatur Tk.I, II/d'),
+(31, 'Penata Muda, III/a'),
+(32, 'Penata Muda Tk.I, III/b'),
+(33, 'Penata, III/c'),
+(34, 'Penata Tk.I, III/d'),
+(41, 'Pembina, IV/a'),
+(42, 'Pembina Tk.I, IV/b'),
+(43, 'Pembina Utama Muda, IV/c');
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`) VALUES
-(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Apartemen', 'Perempuan', 2147483647, 1, '2016-04-01', 1, '2017-05-01', '1992-03-01');
+(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', '', 'Perempuan', 0, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01'),
+(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', '', 'Perempuan', 0, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01');
 
 -- --------------------------------------------------------
 
@@ -164,12 +165,7 @@ CREATE TABLE `tunjangan` (
 --
 
 INSERT INTO `tunjangan` (`id`, `kdPangkat`, `gajiPokok`, `tjIstri`, `tjAnak`, `tjUpns`, `tjStruk`, `tjFungsi`, `tjDaerah`, `tjPencil`, `tjLain`, `tjKompen`, `tjBeras`, `tjPph`, `pembul`) VALUES
-(1, 1, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7),
-(2, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(3, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-(4, 12, 98, 98, 98, 98, 98, 98, 98, 98, 98, 98, 98, 98, 98),
-(5, 13, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3),
-(6, 14, 98, 98, 98, 89, 87, 98, 89, 87, 76, 76, 6, 54, 54);
+(1, 43, 4430400, 443040, 177216, 190000, 0, 0, 0, 0, 0, 0, 289680, 25695, 0);
 
 -- --------------------------------------------------------
 
@@ -256,12 +252,12 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `pangkat`
 --
 ALTER TABLE `pangkat`
-  MODIFY `kdPangkat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `kdPangkat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `tunjangan`
 --
 ALTER TABLE `tunjangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

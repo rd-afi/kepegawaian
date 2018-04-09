@@ -7,6 +7,10 @@ class datapegawai extends CI_Controller {
 		parent::__construct();
 		$this->load->library('datatables');
 		$this->load->model('m_data');
+
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 	}
 
 	public function index(){

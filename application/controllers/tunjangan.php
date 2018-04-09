@@ -7,6 +7,10 @@ class tunjangan extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_tunjangan','tunjangan');
+
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 	}
 
 	public function index()

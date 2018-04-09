@@ -182,7 +182,7 @@ $this->load->view('template/sidebar');
                 </div>
               </div>
               <div class="col-xs-2">
-                <label>TMT Pangkat</label>
+                <label>TMT Jabatan</label>
                   <div class="input-group date">
                     <input type="text" name="tmtJab" class="form-control" id="tmtJab" placeholder="dd-mm-yyyy">
                       <div class="input-group-addon">
@@ -194,7 +194,7 @@ $this->load->view('template/sidebar');
             <br>
             <div class="row">
               <div class="col-xs-2">
-                <label>Mulai Jabatan</label>
+                <label>Mulai Jadi Pegawai</label>
                   <div class="input-group date">
                     <input type="text" name="mulJab" class="form-control" id="mulJab" placeholder="dd-mm-yyyy">
                     <div class="input-group-addon">

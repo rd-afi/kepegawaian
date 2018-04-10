@@ -65,6 +65,77 @@ $this->load->view('template/sidebar');
 
     </div><!-- /.row -->
 
+    <!-- TABEL -->
+    <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Total PNS berdasarkan Jenis Kelamin</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th align="right">Golongan</th>
+                  <th>Laki-Laki</th>
+                  <th>Perempuan</th>
+                  <th>Total</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>I</td>
+                  <td><?php echo $jkpnslkg1; ?></td>
+                  <td><?php echo $jkpnsprg1; ?></td>
+                  <td><?php echo $ttljkg1 = $jkpnsprg1 + $jkpnslkg1; ?></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>II</td>
+                  <td><?php echo $jkpnslkg2; ?></td>
+                  <td><?php echo $jkpnsprg2; ?></td>
+                  <td><?php echo $ttljkg2 = $jkpnsprg2 + $jkpnslkg2; ?></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>III</td>
+                  <td><?php echo $jkpnslkg3; ?></td>
+                  <td><?php echo $jkpnsprg3; ?></td>
+                  <td><?php echo $ttljkg3 = $jkpnsprg3 + $jkpnslkg3; ?></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>IV</td>
+                  <td><?php echo $jkpnslkg4; ?></td>
+                  <td><?php echo $jkpnsprg4; ?></td>
+                  <td><?php echo $ttljkg4 = $jkpnsprg4 + $jkpnslkg4; ?></td>
+                </tr>
+                <tfoot>
+                  <tr>
+                    <th>#</th>
+                    <th>Total</th>
+                    <th><?php
+                    $totallk = $jkpnslkg1 + $jkpnslkg2 + $jkpnslkg3 + $jkpnslkg4;
+                    echo $totallk; ?></th>
+                    <th><?php
+                    $totalpr = $jkpnsprg1 + $jkpnsprg2 + $jkpnsprg3 + $jkpnsprg4;
+                    echo $totalpr; ?></th>
+                    <th><?php echo $ttljkg1 + $ttljkg2 + $ttljkg3 + $ttljkg4; ?></th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /.box -->
+
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
 
 </section><!-- /.content -->
 

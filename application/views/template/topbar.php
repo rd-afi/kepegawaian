@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">                        
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -26,7 +26,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-
+                                    
 
                                     <img src="<?php echo base_url('assets/template/dist/img/ava00.png') ?>" class="img-circle" alt="User Image" />
                                     <p>
@@ -35,7 +35,7 @@
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-                                <!--
+                                <!-- 
                                 <li class="user-body">
                                     <div class="col-xs-4 text-center">
                                         <a href="#">Followers</a>
@@ -54,7 +54,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="<?php echo site_url('login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?php echo site_url('auth/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>

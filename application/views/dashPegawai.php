@@ -15,16 +15,13 @@ $this->load->view('template/head');
 <link href="<?php echo base_url('assets/template/plugins/daterangepicker/daterangepicker-bs3.css') ?>" rel="stylesheet" type="text/css" />
 
 <?php
-$this->load->view('template/topbarPeg');
+$this->load->view('template/topbar');
 $this->load->view('template/sidebarPeg');
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <?php foreach($pegawai as $u){ ?>
-    <h1>SELAMAT DATANG,
-    <!-- <?php echo $this->session->userdata("username"); ?></h1> -->
-    <?php echo $u->namaPegawai;  } ?></h1>      
-
+    <h1>SELAMAT DATANG, 
+    <?php echo $this->session->userdata("username"); ?></h1>
     <ol class="breadcrumb">
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     </ol>

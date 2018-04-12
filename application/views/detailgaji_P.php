@@ -8,7 +8,7 @@ $this->load->view('template/sidebarPeg');
 ?>
 <section class="content-header">
     <h1>
-        GAJI & TUNJANGAN PEGAWAI
+        DETAIL PEGAWAI
         <small></small>
     </h1>
     <ol class="breadcrumb">

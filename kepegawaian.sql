@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2018 at 05:28 AM
+-- Generation Time: Apr 10, 2018 at 03:55 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -122,7 +122,7 @@ CREATE TABLE `pegawai` (
 
 INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`) VALUES
 (196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', '', 'Perempuan', 0, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01'),
-(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', '', 'Perempuan', 0, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01');
+(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Kota Garut', 'Perempuan', 21212312, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01');
 
 -- --------------------------------------------------------
 

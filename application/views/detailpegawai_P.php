@@ -34,10 +34,10 @@ $this->load->view('template/sidebarPeg');
                       <a href="<?php echo base_url(). 'datapegawai/edit/' . $u->nip; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
                     </li>
                     <li class="divider"></li>
-                    <li>
+                    <!-- <li>
                       <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->nip; ?>"
                         onclick="javascript: return confirm('Anda yakin hapus ?')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
-                    </li>
+                    </li> -->
                     <li class="divider"></li>
                     <li>
                       <a href="<?php echo base_url(). 'datapegawai/report/' . $u->nip; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>

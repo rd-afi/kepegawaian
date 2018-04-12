@@ -11,8 +11,34 @@ class akun extends CI_Controller {
 
 	public function index(){
 		$data['data'] = $this->m_akun->ambil_data()->result();
-		// $data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
+		$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
+		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 		$this->load->view('dataakun.php',$data);
+	}
+
+	function tambahAkun($nip){
+		$nip = $this->uri->segment(3);
+		$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$role = $this->input->post('role');
+		//$status = 1;
+		$simpan = $this->input->post('simpan');
+		 if($simpan == 'simpan'){
+		$query = $this->db->query("update pegawai set status=1 WHERE nip='$nip'");
+
+		$this->m_akun->inputAkun();
+		redirect('akun/tambahacc');
+		 }
+			$this->load->view('tambahAkun.php',$data);
+
+			//echo var_dump($simpan);
+	}
+
+	function tambahacc(){
+        $data_pegawai['data_pegawai']=$this->m_akun->get_pegawai()->result();
+		//$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
+		$this->load->view('tambahAkunView.php',$data_pegawai);
 	}
 
 	function tambah(){

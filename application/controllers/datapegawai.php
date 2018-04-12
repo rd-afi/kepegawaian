@@ -111,6 +111,12 @@ class datapegawai extends CI_Controller {
 		$this->load->view('detailpegawai',$data);
 	}
 
+	function detail_gaji($nip){
+		$where = array('nip' => $nip);
+		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
+		$this->load->view('detailgaji_P',$data);
+	}
+
 	function report($nip){
 		$this->load->library('pdf');
 

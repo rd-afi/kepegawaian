@@ -7,10 +7,6 @@ class pangkat extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_pangkat','pangkat');
-
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth"));
-		}
 	}
 
 	public function index()

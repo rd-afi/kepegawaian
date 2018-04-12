@@ -24,7 +24,7 @@ $this->load->view('template/sidebar');
             <div class="row">
                 <div class="form-group col-xs-3">
                     <label>Nomor Induk Pegawai</label>
-                    <input type="text" name="nip" id="nip" class="form-control" value="<?php echo $u->nip?>">
+                    <input type="text" name="nip" id="nip" class="form-control" value="<?php echo $u->NIP?>">
                 </div>
                 <div class="form-group col-xs-5">
                     <label>Nama Pegawai</label>

@@ -31,8 +31,9 @@ $this->load->view('template/sidebar');
           <table class="table table-striped table-bordered" id="myTable">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Username</th>
+                <tr>
+                <th>NIP</th>
+                <th>Nama Pegawai</th>
                 <th>Pangkat</th>
                 <th>TMT</th>
                 <th>Jabatan</th>
@@ -56,16 +57,7 @@ $this->load->view('template/sidebar');
               <?php } ?>
             </tbody>
             <tfoot>
-              <tr>
-                <th>NIP</th>
-                <th>Nama Pegawai</th>
-                <th>Pangkat</th>
-                <th>TMT</th>
-                <th>Jabatan</th>
-                <th>TMT</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
+              
             </tfoot>
           </table>
         </div>
@@ -182,7 +174,7 @@ $this->load->view('template/sidebar');
                 </div>
               </div>
               <div class="col-xs-2">
-                <label>TMT Jabatan</label>
+                <label>TMT Pangkat</label>
                   <div class="input-group date">
                     <input type="text" name="tmtJab" class="form-control" id="tmtJab" placeholder="dd-mm-yyyy">
                       <div class="input-group-addon">
@@ -194,7 +186,7 @@ $this->load->view('template/sidebar');
             <br>
             <div class="row">
               <div class="col-xs-2">
-                <label>Mulai Jadi Pegawai</label>
+                <label>Mulai Jabatan</label>
                   <div class="input-group date">
                     <input type="text" name="mulJab" class="form-control" id="mulJab" placeholder="dd-mm-yyyy">
                     <div class="input-group-addon">

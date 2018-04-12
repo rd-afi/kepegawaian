@@ -7,10 +7,6 @@ class jabatan extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_jabatan','jabatan');
-
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth"));
-		}
 	}
 
 	public function index()
@@ -33,7 +29,7 @@ class jabatan extends CI_Controller {
 			//add html for action
 			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_jabatan('."'".$jabatan->kdJabatan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
 				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_jabatan('."'".$jabatan->kdJabatan."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-
+		
 			$data[] = $row;
 		}
 

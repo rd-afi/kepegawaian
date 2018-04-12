@@ -10,8 +10,6 @@
 
 <!-- jQuery 2.1.3 -->
 <script src="<?php echo base_url('assets/template/plugins/jQuery/jquery-2.1.4.min.js') ?>"></script>
-<!-- Sweetalert -->
-<script src="<?php echo base_url('assets/template/sweetalert/src/sweetalert.js') ?>" type="text/javascript"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="<?php echo base_url('assets/template/bootstrap/js/bootstrap.min.js') ?>" type="text/javascript"></script>
 <!-- SlimScroll -->

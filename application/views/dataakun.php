@@ -21,8 +21,8 @@ $this->load->view('template/sidebar');
 <section class="content">
   <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab_1" data-toggle="tab">Tabel Data Akun</a></li>
-      <li><a href="#tab_2" data-toggle="tab">Tambah Akun</a></li>
+      <!--<li class="active"><a href="#tab_1" data-toggle="tab">Tabel Data Akun</a></li>
+     <!-- <li><a href="#tab_2" data-toggle="tab">Tambah Akun</a></li>
     </ul>
     <!-- TAB 1 -->
     <div class="tab-content">
@@ -88,13 +88,33 @@ $this->load->view('template/sidebar');
         <!-- END TAB 1 -->
       </div>
       <!-- TAB 2 -->
-      <div class="tab-pane" id="tab_2">
-        <h3>TAMBAH DATA PEGAWAI</h3>
+     <!-- <div class="tab-pane" id="tab_2">
+        <!-- <h3>TAMBAH AKUN</h3> -->
+		<!-- <table class="table table-striped table-bordered" id="myTable">
         <div class="box-body">
+		 <thead>
+              <tr>
+                <th>NIP</th>
+                <th>Nama Pegawai</th>
+                <th>Pangkat</th>
+				<th>Aksi</th>
+              </tr>
+            </thead>
+           <tbody>
+              <?php foreach($data as $u){ ?>
+              <tr>
+                <td><?php echo $u->nip ?></td>
+                <td><?php echo $u->namaPegawai ?></td>
+                <td><?php echo $u->namaPangkat ?></td>
+                <td><a class="btn btn-sm btn-primary" title="Detail" href="akun/tambahacc/<?php echo $u->nip ?>">Tambah Akun</a></td>
+              </tr>
+              <?php } ?>
+			</tbody>
 
         </div>
-      </div>
-      <!-- END TAB 2 -->
+		</table>
+      </div> -->
+       <!--END TAB 2 -->
     </div>
   </div>
 

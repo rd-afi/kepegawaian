@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 18, 2018 at 02:11 PM
+=======
+-- Generation Time: Apr 10, 2018 at 03:55 PM
+>>>>>>> RD
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -121,9 +125,15 @@ CREATE TABLE `pegawai` (
 -- Dumping data for table `pegawai`
 --
 
+<<<<<<< HEAD
 INSERT INTO `pegawai` (`NIP`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`) VALUES
 (196506051985032003, 'Rita Parsita, S.Pd.', 'Garut', '1965-06-05', 'Islam', 'Hotel', 'Perempuan', 2147483647, 4, '2010-10-01', 11, '1998-10-01', '1985-03-01'),
 (196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Apartemen', 'Perempuan', 2147483647, 1, '2016-04-01', 1, '2017-05-01', '1992-03-01');
+=======
+INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`) VALUES
+(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', '', 'Perempuan', 0, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01'),
+(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Kota Garut', 'Perempuan', 21212312, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01');
+>>>>>>> RD
 
 -- --------------------------------------------------------
 

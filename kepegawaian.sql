@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2018 at 05:28 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Apr 12, 2018 at 06:46 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,8 +47,6 @@ INSERT INTO `jabatan` (`kdJabatan`, `namaJabatan`) VALUES
 (7, 'Kepala Seksi Pengembangan Sumber Daya Manusia'),
 (8, 'Kepala Seksi Pengambangan Satuan Pendidikan'),
 (9, 'Kepala Seksi Program dan Evaluasi'),
-(10, 'Fungsional Umum'),
-(11, 'Pembantu Pimpinan'),
 (12, 'Pamong Belajar Pertama'),
 (13, 'Pamong Belajar Madya'),
 (14, 'Pamong Belajar Muda');
@@ -113,16 +113,36 @@ CREATE TABLE `pegawai` (
   `tmtPangkat` date NOT NULL,
   `kdJabatan` int(10) NOT NULL,
   `tmtJabatan` date NOT NULL,
-  `mulaiJabatan` date NOT NULL
+  `mulaiJabatan` date NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`) VALUES
-(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', '', 'Perempuan', 0, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01'),
-(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', '', 'Perempuan', 0, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01');
+INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`, `status`) VALUES
+(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', '', 'Perempuan', 0, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01', 0),
+(196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', '', 'Perempuan', 0, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pegawainon`
+--
+
+CREATE TABLE `pegawainon` (
+  `kdPegawai` varchar(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jabatan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pegawainon`
+--
+
+INSERT INTO `pegawainon` (`kdPegawai`, `nama`, `jabatan`) VALUES
+('P-001', 'Juda', 'Pengajar');
 
 -- --------------------------------------------------------
 
@@ -175,7 +195,6 @@ INSERT INTO `tunjangan` (`id`, `kdPangkat`, `gajiPokok`, `tjIstri`, `tjAnak`, `t
 
 CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
-  `nip` bigint(18) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(20) NOT NULL,
   `status` int(1) NOT NULL
@@ -185,10 +204,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `nip`, `password`, `role`, `status`) VALUES
-('196905151992032009', 196905151992032009, '0b823b7d9e9cb5216f49c6ead8dde178', '1', 1),
-('admin', 0, '21232f297a57a5a743894a0e4a801fc3', '0', 1),
-('pegawai', 0, '047aeeb234644b9e2d4138ed3bc7976a', '2', 0);
+INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
+('196905151992032009', '0b823b7d9e9cb5216f49c6ead8dde178', '1', 1),
+('admin', '21232f297a57a5a743894a0e4a801fc3', '0', 1),
+('pegawai', '047aeeb234644b9e2d4138ed3bc7976a', '2', 0);
 
 --
 -- Indexes for dumped tables
@@ -221,6 +240,12 @@ ALTER TABLE `pegawai`
   ADD KEY `kdJabatan` (`kdJabatan`);
 
 --
+-- Indexes for table `pegawainon`
+--
+ALTER TABLE `pegawainon`
+  ADD PRIMARY KEY (`kdPegawai`);
+
+--
 -- Indexes for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
@@ -248,16 +273,19 @@ ALTER TABLE `user`
 --
 ALTER TABLE `jabatan`
   MODIFY `kdJabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `pangkat`
 --
 ALTER TABLE `pangkat`
   MODIFY `kdPangkat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
 --
 -- AUTO_INCREMENT for table `tunjangan`
 --
 ALTER TABLE `tunjangan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -268,6 +296,7 @@ ALTER TABLE `tunjangan`
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`kdPangkat`) REFERENCES `pangkat` (`kdPangkat`),
   ADD CONSTRAINT `pegawai_ibfk_2` FOREIGN KEY (`kdJabatan`) REFERENCES `jabatan` (`kdJabatan`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

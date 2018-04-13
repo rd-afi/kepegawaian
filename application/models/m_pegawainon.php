@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -10,8 +10,13 @@ class m_pegawainon extends CI_Model{
 		$this->load->database();
 	}
 
-	
-	public function getkodeunik() { 
+	function ambil_data(){
+		// $this->db->select('*')
+		// ->join('pegawai','pegawai.nip=akun.nip');
+		return $this->db->get('pegawainon');
+	}
+
+	public function getkodeunik() {
         $q = $this->db->query("SELECT MAX(RIGHT(kdPegawai,2)) AS idmax FROM pegawainon");
         $kd = ""; //kode awal
         if($q->num_rows()>0){ //jika data ada
@@ -25,34 +30,27 @@ class m_pegawainon extends CI_Model{
        // $kar = "B-."; //karakter depan kodenya
         //gabungkan string dengan kode yang telah dibuat tadi
         return "P-" . $kd;
-		
-   } 
-	
-	
+
+   }
+
+
 	public function get_pegawai(){
 		$query=$this->db->query("select a.nip,a.namaPegawai,b.namaPangkat from pegawai a join pangkat b on (a.kdPangkat=b.kdPangkat) where a.status=0  ");
 		return $query;
 	}
-	
+
 		public function get_pegawaiNip($nip){
 		$query=$this->db->query("select nip from pegawai where nip ='$nip'");
 		return $query;
 	}
-	
-	
+
+
 	public function inputAkun(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$role = $this->input->post('role');
 		$query = $this->db->query("insert into user (username,password,role) values  ('$username','$password','$role')");
 		return $query;
-	}
-
-	
-	function ambil_data(){
-		// $this->db->select('*')
-		// ->join('pegawai','pegawai.nip=akun.nip');
-		return $this->db->get('user');
 	}
 
 	function input_data($data,$table){
@@ -71,13 +69,6 @@ class m_pegawainon extends CI_Model{
 	function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
-	}
-
-	function detail_data($where,$table){
-		$this->db->select('*')
-		->join('pangkat','pangkat.kdPangkat=pegawai.kdPangkat')
-		->join('jabatan','jabatan.kdJabatan=pegawai.kdJabatan');
-		return $this->db->get_where($table,$where);
 	}
 
 }

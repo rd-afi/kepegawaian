@@ -57,7 +57,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url('datapegawainon/inputPegawaiNon') ?>"><i class="fa fa-circle-o"></i> Input Pegawai Non PNS</a></li>
+                    <li><a href="<?php echo site_url('datapegawainon') ?>"><i class="fa fa-circle-o"></i> Pegawai Non-PNS</a></li>
                 </ul>
             </li>
             <li class="treeview">

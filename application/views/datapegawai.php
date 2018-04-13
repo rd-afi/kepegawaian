@@ -32,7 +32,7 @@ $this->load->view('template/sidebar');
             <thead>
               <tr>
                 <th>No</th>
-                <th>Username</th>
+                <th>Nama Pegawai</th>
                 <th>Pangkat</th>
                 <th>TMT</th>
                 <th>Jabatan</th>

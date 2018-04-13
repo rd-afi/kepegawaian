@@ -16,6 +16,22 @@ class akun extends CI_Controller {
 		$this->load->view('dataakun.php',$data);
 	}
 
+	function tambah(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$role = $this->input->post('role');
+		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
+
+		$data = array(
+			'username' => $username,
+			'password' => md5($password),
+			'role' => $role,
+			'status' => '1'
+			);
+		$this->m_akun->input_data($data,'user');
+		redirect('akun');
+	}
+
 	function tambahAkun($nip){
 		$nip = $this->uri->segment(3);
 		$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
@@ -39,40 +55,6 @@ class akun extends CI_Controller {
         $data_pegawai['data_pegawai']=$this->m_akun->get_pegawai()->result();
 		//$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
 		$this->load->view('tambahAkunView.php',$data_pegawai);
-	}
-
-	function tambah(){
-		$nip = $this->input->post('nip');
-		$namaPegawai = $this->input->post('namaPegawai');
-		$tempat = $this->input->post('tempat');
-		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
-		$agama = $this->input->post('cbAgama');
-		$jk = $this->input->post('rbJk');
-		$alamat = $this->input->post('alamat');
-		$telepon = $this->input->post('telepon');
-		$pangkat = $this->input->post('cbPangkat');
-		$tmtPang = date('Y-m-d', strtotime($this->input->post('tmtPang')));
-		$jabatan = $this->input->post('cbJabatan');
-		$tmtJab = date('Y-m-d', strtotime($this->input->post('tmtJab')));
-		$mulJab = date('Y-m-d', strtotime($this->input->post('mulJab')));
-
-		$data = array(
-			'nip' => $nip,
-			'namaPegawai' => $namaPegawai,
-			'tempat' => $tempat,
-			'tglLahir' => $ttl,
-			'agama' => $agama,
-			'jk' => $jk,
-			'alamat' => $alamat,
-			'telepon' => $telepon,
-			'kdPangkat' => $pangkat,
-			'tmtPangkat' => $tmtPang,
-			'kdJabatan' => $jabatan,
-			'tmtJabatan' => $tmtJab,
-			'mulaiJabatan' => $mulJab
-			);
-		$this->m_data->input_data($data,'pegawai');
-		redirect('datapegawai');
 	}
 
 	function hapus($nip){

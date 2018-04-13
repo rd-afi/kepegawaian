@@ -10,29 +10,26 @@ class datapegawainon extends CI_Controller {
 	}
 
 	public function index(){
-		$data['pegawainon'] = $this->db->query("SELECT * FROM pegawai");
-		$this->load->view('datapegawainon.php',$data);
+		$data['data'] = $this->m_pegawainon->ambil_data()->result();
+		$data['kdPegawai'] = $this->m_pegawainon->getkodeunik();
+		$this->load->view('datanonpegawai.php',$data);
 	}
-	
-	function inputPegawaiNon(){
-		
-		$data['kd_pegawai'] = $this->m_pegawainon->getkodeunik();
+
+	function tambah(){
 		$kdPegawai = $this->input->post('kdPegawai');
 		$nama = $this->input->post('nama');
 		$jabatan = $this->input->post('jabatan');
-		//$status = 1;
-		$simpan = $this->input->post('simpan');
-		 if($simpan == 'simpan'){
-		$this->m_akun->inputAkun();
-		redirect('akun/tambahacc');
-		 }	
-			$this->load->view('v_inputpegawainon',$data);
-			
-			//echo var_dump($simpan);
-			
+
+		$data = array(
+			'kdPegawai' => $kdPegawai,
+			'nama' => $nama,
+			'jabatan' => $jabatan
+			);
+		$this->m_pegawainon->input_data($data,'pegawainon');
+		redirect('datapegawainon');
 	}
 
-	
+
 	function hapus($nip){
 		$where = array('nip' => $nip);
 		$this->m_data->hapus_data($where,'pegawai');

@@ -8,43 +8,45 @@ $this->load->view('template/sidebar');
 ?>
 <?php foreach($tampil_nip->result_array() as $row) {?>
 <div class="box-body">
+  <form action="<?php echo base_url(). 'akun/tambah'; ?>" method="post">
                 <div class="form-group">
                   <label >User Name</label>
-                  <input type="email" class="form-control" id="" name="username" value="<?php echo $row['nip'];?>">
+                  <input type="text" class="form-control" id="username" name="username" value="<?php echo $row['nip'];?>" readonly>
                 </div>
                 <div class="form-group">
                   <label >Password</label>
-                  <input type="password" class="form-control" id="" placeholder="Password" name="password">
+                  <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="<?php echo $row['nip'];?>">
                 </div>
 			<div class="form-group">
                   <div class="radio">
                     <label>
-                      <input type="radio" name="role" id="" value="0" checked>
+                      <input type="radio" name="role" id="role" value="0" checked>
                     Admin
                     </label>
                   </div>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="role" id="" value="1" required="">
+                      <input type="radio" name="role" id="role" value="1" required="">
                       Pegawai Negeri Sipil
                     </label>
                   </div>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="role" id="" value="2" required="">
+                      <input type="radio" name="role" id="role" value="2" required="">
                       Non PNS
                     </label>
                   </div>
-				  
+
 				  </div>
-              <input type="submit" class="btn btn-success btn pull-right" value="simpan" name="simpan"> 
-           
+              <input type="submit" class="btn btn-success btn pull-right" value="simpan" name="simpan">
+
                 </div>
-            
-           
+              </form>
 
 
-<?php }?>	
+
+
+<?php }?>
 
 <?php
 $this->load->view('template/js');

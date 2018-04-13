@@ -16,6 +16,7 @@ class akun extends CI_Controller {
 		$this->load->view('dataakun.php',$data);
 	}
 
+<<<<<<< HEAD
 	function tambahAkun($nip){
 		$nip = $this->uri->segment(3);
 		$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
@@ -45,6 +46,47 @@ class akun extends CI_Controller {
 			);
 		$this->pangkat->update(array('kdPangkat' => $this->input->post('kdPangkat')), $data);
 		echo json_encode(array("status" => TRUE));
+=======
+	function tambah(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$role = $this->input->post('role');
+		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
+
+		$data = array(
+			'username' => $username,
+			'password' => md5($password),
+			'role' => $role,
+			'status' => '1'
+			);
+		$this->m_akun->input_data($data,'user');
+		redirect('akun');
+	}
+
+	function tambahAkun($nip){
+		$nip = $this->uri->segment(3);
+		$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$role = $this->input->post('role');
+		//$status = 1;
+		$simpan = $this->input->post('simpan');
+		 if($simpan == 'simpan'){
+		$query = $this->db->query("update pegawai set status=1 WHERE nip='$nip'");
+
+		$this->m_akun->inputAkun();
+		redirect('akun/tambahacc');
+		 }
+			$this->load->view('tambahAkun.php',$data);
+
+			//echo var_dump($simpan);
+	}
+
+	function tambahacc(){
+        $data_pegawai['data_pegawai']=$this->m_akun->get_pegawai()->result();
+		//$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
+		$this->load->view('tambahAkunView.php',$data_pegawai);
+>>>>>>> RD
 	}
 	
 	

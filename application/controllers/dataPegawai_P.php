@@ -17,7 +17,7 @@ class datapegawai_P extends CI_Controller {
 		$data['data'] = $this->m_data->ambil_data()->result();
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
-		$this->load->view('datapegawai.php',$data);
+		$this->load->view('datapegawai_P',$data);
 	}
 
 	function tambah(){
@@ -65,7 +65,7 @@ class datapegawai_P extends CI_Controller {
 		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
 		$where = array('nip' => $nip);
 		$data['pegawai'] = $this->m_data->edit_data($where,'pegawai')->result();
-		$this->load->view('editpegawai',$data);
+		$this->load->view('editpegawai_P',$data);
 	}
 
 	function ubah(){
@@ -102,7 +102,8 @@ class datapegawai_P extends CI_Controller {
 			'nip' => $nip
 		);
 		$this->m_data->update_data($where,$data,'pegawai');
-		redirect('datapegawai');
+		redirect('datapegawai_P/detail/'. $nip .'');
+		// redirect('detailpegawai_P');
 	}
 
 	function detail($nip){

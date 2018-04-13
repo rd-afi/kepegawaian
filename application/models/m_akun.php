@@ -15,6 +15,36 @@ class m_akun extends CI_Model{
 		return $this->db->get('user');
 	}
 
+	function akun_list(){
+      $hasil=$this->db->query("SELECT * FROM user");
+      return $hasil->result();
+  }
+
+	function get_akun_by_username($username){
+        $hsl=$this->db->query("SELECT * FROM user WHERE username = '$username'");
+        if($hsl->num_rows()>0){
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'username' => $data->username,
+                    'password' => $data->password,
+                    'role' => $data->role,
+                    'status' => $data->status,
+                    );
+            }
+        }
+        return $hasil;
+  }
+
+	function update_akun($username,$password,$role,$status){
+  		$hasil = $this->db->query("UPDATE user SET username='$username',password='$password',role='$role',status='$status' WHERE username='$username'");
+      return $hasil;
+  }
+
+    function hapus_akun($username){
+        $hasil=$this->db->query("DELETE FROM user WHERE username='$username'");
+        return $hasil;
+    }
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
@@ -58,6 +88,11 @@ class m_akun extends CI_Model{
 
 	 public function get_pegawai(){
 		 $query=$this->db->query("SELECT * FROM pegawai a join pangkat b on (a.kdPangkat = b.kdPangkat) WHERE NOT EXISTS (SELECT * FROM user WHERE a.nip = user.username)");
+		 return $query;
+	 }
+
+	 public function get_pegawai_non(){
+		 $query=$this->db->query("SELECT * FROM pegawainon a WHERE NOT EXISTS (SELECT * FROM user WHERE a.kdPegawai = user.username)");
 		 return $query;
 	 }
 

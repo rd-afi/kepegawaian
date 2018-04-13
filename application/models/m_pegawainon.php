@@ -29,7 +29,7 @@ class m_pegawainon extends CI_Model{
         }
        // $kar = "B-."; //karakter depan kodenya
         //gabungkan string dengan kode yang telah dibuat tadi
-        return "P-" . $kd;
+        return "P" . $kd;
 
    }
 

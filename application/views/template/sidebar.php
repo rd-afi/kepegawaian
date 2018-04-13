@@ -78,9 +78,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo site_url('akun') ?>"><i class="fa fa-circle-o"></i> Akun</a></li>
-                </ul>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url('akun/tambahacc') ?>"><i class="fa fa-circle-o"></i>Buat Akun</a></li>
+                    <!-- <li><a href="<?php echo site_url('akun/tambahacc') ?>"><i class="fa fa-circle-o"></i>Buat Akun</a></li> -->
                 </ul>
             </li>
             </li>

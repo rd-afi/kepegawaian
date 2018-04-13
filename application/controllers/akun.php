@@ -13,115 +13,90 @@ class akun extends CI_Controller {
 		$data['data'] = $this->m_akun->ambil_data()->result();
 		$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
+		$data['akunPegawai']=$this->m_akun->get_pegawai()->result();
+		$data['akunPegawaiNon']=$this->m_akun->get_pegawai_non()->result();
 		$this->load->view('dataakun.php',$data);
 	}
 
-	function tambah(){
+	function data_akun(){
+      $data = $this->m_akun->akun_list();
+      echo json_encode($data);
+    }
+
+	function get_akun(){
+        $username = $this->input->get('username');
+        $data=$this->m_akun->get_akun($username);
+        echo json_encode($data);
+  }
+
+	function tambahAkunPegawai(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$role = $this->input->post('role');
-		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
 
 		$data = array(
 			'username' => $username,
 			'password' => md5($password),
 			'role' => $role,
 			'status' => '1'
-			);
+		);
 		$this->m_akun->input_data($data,'user');
 		redirect('akun');
 	}
 
-	function tambahAkun($nip){
-		$nip = $this->uri->segment(3);
-		$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$role = $this->input->post('role');
-		//$status = 1;
-		$simpan = $this->input->post('simpan');
-		 if($simpan == 'simpan'){
-		$query = $this->db->query("update pegawai set status=1 WHERE nip='$nip'");
-
-		$this->m_akun->inputAkun();
-		redirect('akun/tambahacc');
-		 }
-			$this->load->view('tambahAkun.php',$data);
-
-			//echo var_dump($simpan);
-	}
-
-	function tambahacc(){
-        $data_pegawai['data_pegawai']=$this->m_akun->get_pegawai()->result();
-		//$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
-		$this->load->view('tambahAkunView.php',$data_pegawai);
-	}
-
-	function hapus($nip){
-		$where = array('nip' => $nip);
-		$this->m_data->hapus_data($where,'pegawai');
-		redirect('datapegawai');
-	}
-
-	function edit($nip){
-		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
-		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
-		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->edit_data($where,'pegawai')->result();
-		$this->load->view('editpegawai',$data);
-	}
-
-	function ubah(){
-		$nip = $this->input->post('nip');
-		$namaPegawai = $this->input->post('namaPegawai');
-		$tempat = $this->input->post('tempat');
-		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
-		$agama = $this->input->post('cbAgama');
-		$jk = $this->input->post('rbJk');
-		$alamat = $this->input->post('alamat');
-		$telepon = $this->input->post('telepon');
-		$pangkat = $this->input->post('cbPangkat');
-		$tmtPang = date('Y-m-d', strtotime($this->input->post('tmtPang')));
-		$jabatan = $this->input->post('cbJabatan');
-		$tmtJab = date('Y-m-d', strtotime($this->input->post('tmtJab')));
-		$mulJab = date('Y-m-d', strtotime($this->input->post('mulJab')));
+	function tambahAkunNonPegawai(){
+		$username = $this->input->post('nusername');
+		$password = $this->input->post('npassword');
+		$role = $this->input->post('nrole');
 
 		$data = array(
-			'nip' => $nip,
-			'namaPegawai' => $namaPegawai,
-			'tempat' => $tempat,
-			'tglLahir' => $ttl,
-			'agama' => $agama,
-			'jk' => $jk,
-			'alamat' => $alamat,
-			'telepon' => $telepon,
-			'kdPangkat' => $pangkat,
-			'tmtPangkat' => $tmtPang,
-			'kdJabatan' => $jabatan,
-			'tmtJabatan' => $tmtJab,
-			'mulaiJabatan' => $mulJab
-			);
-		$where = array(
-			'nip' => $nip
+			'username' => $username,
+			'password' => md5($password),
+			'role' => $role,
+			'status' => '1'
 		);
-		$this->m_data->update_data($where,$data,'pegawai');
-		redirect('datapegawai');
+		$this->m_akun->input_data($data,'user');
+		redirect('akun');
 	}
 
-	function detail($nip){
-		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
-		$this->load->view('detailpegawai',$data);
+	function update_akun(){
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$role = $this->input->post('role');
+			$status = $this->input->post('status');
+			$data = $this->m_akun->update_akun($username,$password,$role,$status);
+			echo json_encode($data);
 	}
 
-	function report($nip){
-		$this->load->library('pdf');
-
-		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
-
-		$this->pdf->setPaper('A4', 'potrait');
-    $this->pdf->filename = "laporan.pdf";
-    $this->pdf->load_view('printdetailpegawai', $data);
+	function hapus($username){
+		$where = array('username' => $username);
+		$this->m_akun->hapus_data($where,'user');
+		redirect('akun');
 	}
+
+
+	// function tambahAkun($nip){
+	// 	$nip = $this->uri->segment(3);
+	// 	$data['tampil_nip'] = $this->m_akun->get_pegawaiNip($nip);
+	// 	$username = $this->input->post('username');
+	// 	$password = $this->input->post('password');
+	// 	$role = $this->input->post('role');
+	// 	//$status = 1;
+	// 	$simpan = $this->input->post('simpan');
+	// 	 if($simpan == 'simpan'){
+	// 	$query = $this->db->query("update pegawai set status=1 WHERE nip='$nip'");
+	//
+	// 	$this->m_akun->inputAkun();
+	// 	redirect('akun/tambahacc');
+	// 	 }
+	// 		$this->load->view('tambahAkun.php',$data);
+	//
+	// 		//echo var_dump($simpan);
+	// }
+
+	// function tambahacc(){
+  //       $data_pegawai['data_pegawai']=$this->m_akun->get_pegawai()->result();
+	// 	//$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
+	// 	$this->load->view('tambahAkunView.php',$data_pegawai);
+	// }
 }

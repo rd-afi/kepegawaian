@@ -11,8 +11,7 @@ class m_pegawainon extends CI_Model{
 	}
 
 	function ambil_data(){
-		// $this->db->select('*')
-		// ->join('pegawai','pegawai.nip=akun.nip');
+		$this->db->select('*');
 		return $this->db->get('pegawainon');
 	}
 
@@ -44,6 +43,10 @@ class m_pegawainon extends CI_Model{
 		return $query;
 	}
 
+	function detail_data($where,$table){
+		$this->db->select('*');
+		return $this->db->get_where($table,$where);
+	}
 
 	public function inputAkun(){
 		$username = $this->input->post('username');

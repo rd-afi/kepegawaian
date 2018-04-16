@@ -49,6 +49,10 @@ class Login extends CI_Controller{
 			{
 				redirect('dashPegawai');
 			}
+			elseif($this->session->userdata('role') == '2')
+			{
+				redirect('dashNonPegawai');
+			}
 
 		}else{
 			echo "Username dan password salah !";

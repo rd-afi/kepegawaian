@@ -50,16 +50,6 @@
                     <li><a href="<?php echo site_url('jabatan') ?>"><i class="fa fa-circle-o"></i> Jabatan</a></li>
                 </ul>
             </li>
-			<li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user">
-                    </i> <span>Data Pegawai Non PNS</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url('datapegawainon/inputPegawaiNon') ?>"><i class="fa fa-circle-o"></i> Input Pegawai Non PNS</a></li>
-                </ul>
-            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user">
@@ -88,17 +78,9 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo site_url('akun') ?>"><i class="fa fa-circle-o"></i> Akun</a></li>
-                </ul>
-<<<<<<< HEAD
-				  <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url('akun/tambahacc') ?>"><i class="fa fa-circle-o"></i>Buat Akun</a></li>
-                </ul>
-=======
-                <ul class="treeview-menu">
-                    <li><a href="<?php echo site_url('akun/tambahacc') ?>"><i class="fa fa-circle-o"></i>Buat Akun</a></li>
+                    <!-- <li><a href="<?php echo site_url('akun/tambahacc') ?>"><i class="fa fa-circle-o"></i>Buat Akun</a></li> -->
                 </ul>
             </li>
->>>>>>> RD
             </li>
             <!--
             <li><a href="#"><i class="fa fa-book"></i> Documentation</a></li>

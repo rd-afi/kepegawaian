@@ -31,15 +31,16 @@ $this->load->view('template/sidebar');
                 <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/edit/' . $u->NIP; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
+                      <a href="<?php echo base_url(). 'datapegawai/edit/' . $u->nip; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->NIP; ?>"><i class="glyphicon glyphicon-trash"></i> Hapus Data</a>
+                      <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->nip; ?>"
+                        onclick="javascript: return confirm('Anda yakin hapus ?')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/report/' . $u->NIP; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>
+                      <a href="<?php echo base_url(). 'datapegawai/report/' . $u->nip; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>
                     </li>
                   </ul>
               </div><!-- /btn-group -->
@@ -49,8 +50,7 @@ $this->load->view('template/sidebar');
             <div class="box-body">
 
               <h1><?php echo $u->namaPegawai ?></h1>
-              <h3><?php echo $u->NIP ?></h3>
-			  <br>
+              <h3><?php echo $u->nip ?></h3>
               <table class="table table-bordered table-striped">
                 <tr>
                   <td style="width : 30%;">Tempat, Tanggal Lahir</td>

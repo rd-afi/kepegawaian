@@ -4,7 +4,7 @@ $this->load->view('template/head');
 <!--tambahkan custom css disini-->
 <?php
 $this->load->view('template/topbarPeg');
-$this->load->view('template/sidebar');
+$this->load->view('template/sidebarPeg');
 ?>
 <!-- Content Header (Page header) -->
 
@@ -20,7 +20,7 @@ $this->load->view('template/sidebar');
         </div>
         <?php foreach($pegawai as $u){ ?>
         <div class="box-body">
-          <form action="<?php echo base_url(). 'datapegawai/ubah'; ?>" method="post">
+          <form action="<?php echo base_url(). 'datapegawai_P/ubah'; ?>" method="post">
             <div class="row">
                 <div class="form-group col-xs-3">
                     <label>Nomor Induk Pegawai</label>

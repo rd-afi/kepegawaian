@@ -31,7 +31,7 @@ $this->load->view('template/sidebarPeg');
                 <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/edit/' . $u->nip; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
+                      <a href="<?php echo base_url(). 'datapegawai_P/edit/' . $u->nip; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
                     </li>
                     <li class="divider"></li>
                     <!-- <li>

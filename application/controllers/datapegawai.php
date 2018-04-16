@@ -7,13 +7,16 @@ class datapegawai extends CI_Controller {
 		parent::__construct();
 		$this->load->library('datatables');
 		$this->load->model('m_data');
+
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 	}
 
 	public function index(){
 		$data['data'] = $this->m_data->ambil_data()->result();
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
-		$data['pegawai'] = $this->db->query("SELECT * FROM pegawai");
 		$this->load->view('datapegawai.php',$data);
 	}
 
@@ -103,9 +106,15 @@ class datapegawai extends CI_Controller {
 	}
 
 	function detail($nip){
-		$where = array('NIP' => $nip);
+		$where = array('nip' => $nip);
 		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
 		$this->load->view('detailpegawai',$data);
+	}
+
+	function detail_gaji($nip){
+		$where = array('nip' => $nip);
+		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
+		$this->load->view('detailgaji_P',$data);
 	}
 
 	function report($nip){

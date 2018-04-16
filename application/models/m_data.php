@@ -41,4 +41,13 @@ class M_data extends CI_Model{
 		return $this->db->get_where($table,$where);
 	}
 
+	function detail_gaji($where,$table){
+		$this->db->select('*')
+		->join('pangkat','pangkat.kdPangkat=pegawai.kdPangkat')
+		->join('jabatan','jabatan.kdJabatan=pegawai.kdJabatan')
+		->join('tunjangan','tunjangan.id=jabatan.kdJabatan');
+		return $this->db->get_where($table,$where);
+	}
+
+
 }

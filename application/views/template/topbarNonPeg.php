@@ -4,7 +4,7 @@
     <div class="wrapper">
 
         <header class="main-header">
-            <a href="#" class="logo"><b>Admin</b>Page</a>
+            <a href="#" class="logo"><b>Non-Pegawai</b>Page</a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
@@ -21,7 +21,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?php echo base_url('assets/template/dist/img/ava00.png') ?>" class="user-image" alt="User Image"/>
-                                <span class="hidden-xs">Administrator</span>
+                                <span class="hidden-xs"><?php foreach($pegawainon as $u){ echo $u->nama; } ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -30,7 +30,7 @@
 
                                     <img src="<?php echo base_url('assets/template/dist/img/ava00.png') ?>" class="img-circle" alt="User Image" />
                                     <p>
-                                        Administrator
+                                        <?php foreach($pegawainon as $u){ echo $u->nama; } ?>
                                         <small></small>
                                     </p>
                                 </li>

@@ -7,12 +7,44 @@ class datapegawainon extends CI_Controller {
 		parent::__construct();
 		$this->load->library('datatables');
 		$this->load->model('m_pegawainon');
+
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 	}
 
 	public function index(){
 		$data['data'] = $this->m_pegawainon->ambil_data()->result();
 		$data['kdPegawai'] = $this->m_pegawainon->getkodeunik();
 		$this->load->view('datanonpegawai.php',$data);
+	}
+
+	public function ajax_list()
+	{
+		$list = $this->datapegawainon->get_datatables();
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $jabatan) {
+			$no++;
+			$row = array();
+			$row[] = $jabatan->kdJabatan;
+			$row[] = $jabatan->namaJabatan;
+
+			//add html for action
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_nonPegawa('."'".$jabatan->kdJabatan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+					<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_nonPegawai('."'".$jabatan->kdJabatan."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+
+			$data[] = $row;
+		}
+
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->jabatan->count_all(),
+						"recordsFiltered" => $this->jabatan->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
 	}
 
 	function tambah(){

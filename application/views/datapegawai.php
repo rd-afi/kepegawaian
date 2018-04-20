@@ -34,10 +34,10 @@ $this->load->view('template/sidebar');
                 <th>No</th>
                 <th>Nama Pegawai</th>
                 <th>Pangkat</th>
-                <th>TMT</th>
+                <!-- <th>TMT</th> -->
                 <th>Jabatan</th>
-                <th>TMT</th>
-                <th>Status</th>
+                <!-- <th>TMT</th> -->
+                <!-- <th>Status</th> -->
                 <th></th>
               </tr>
             </thead>
@@ -47,10 +47,10 @@ $this->load->view('template/sidebar');
                 <td><?php echo $u->nip ?></td>
                 <td><?php echo $u->namaPegawai ?></td>
                 <td><?php echo $u->namaPangkat ?></td>
-                <td><?php echo date('d-m-Y', strtotime($u->tmtPangkat));?></td>
+                <!-- <td><?php echo date('d-m-Y', strtotime($u->tmtPangkat));?></td> -->
                 <td><?php echo $u->namaJabatan ?></td>
-                <td><?php echo date('d-m-Y', strtotime($u->tmtJabatan));?></td>
-                <td><?php echo date('d-m-Y', strtotime($u->mulaiJabatan));?></td>
+                <!-- <td><?php echo date('d-m-Y', strtotime($u->tmtJabatan));?></td> -->
+                <!-- <td><?php echo date('d-m-Y', strtotime($u->mulaiJabatan));?></td> -->
                 <td><a class="btn btn-sm btn-primary" title="Detail" href="datapegawai/detail/<?php echo $u->nip ?>">Detail</a></td>
               </tr>
               <?php } ?>
@@ -60,10 +60,10 @@ $this->load->view('template/sidebar');
                 <th>NIP</th>
                 <th>Nama Pegawai</th>
                 <th>Pangkat</th>
-                <th>TMT</th>
+                <!-- <th>TMT</th> -->
                 <th>Jabatan</th>
-                <th>TMT</th>
-                <th>Status</th>
+                <!-- <th>TMT</th> -->
+                <!-- <th>Status</th> -->
                 <th></th>
               </tr>
             </tfoot>

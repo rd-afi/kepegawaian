@@ -33,21 +33,25 @@ $this->load->view('template/sidebarPeg');
               <h3 class="box-title">Gaji & Tunjangan Pegawai</h3>
               <div class="input-group margin pull-right">
               <div class="input-group-btn pull-right">
-                <!-- <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                   <ul class="dropdown-menu">
-                    <li>
+                    <!-- <li>
                       <a href="<?php echo base_url(). 'datapegawai/edit/' . $u->nip; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
-                    </li>
-                    <li class="divider"></li>
+                    </li> -->
+                    <!-- <li class="divider"></li>
                     <li>
                       <a href="<?php echo base_url(). 'datapegawai/hapus/' . $u->nip; ?>"
                         onclick="javascript: return confirm('Anda yakin hapus ?')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                     </li>
+                    <li class="divider"></li> -->
+                    <li>
+                      <a href="<?php echo base_url(). 'datapegawai_P/report/' . $u->nip; ?>"><i class="fa fa-download"></i> Unduh</a>
+                    </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/report/' . $u->nip; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>
+                      <a href="<?php echo base_url(). 'datapegawai_P/print_gaji/' . $u->nip; ?>" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>
                     </li>
-                  </ul> -->
+                  </ul>
               </div><!-- /btn-group -->
             </div>
             </div>
@@ -59,58 +63,71 @@ $this->load->view('template/sidebarPeg');
               <table class="table table-bordered table-striped">
                 <tr>
                   <td>Gaji Pokok</td>
-                  <td><?php echo rupiah($u->gajiPokok) ?></td>
+                  <td><?php $gajiPokok = $u->gajiPokok; echo rupiah($gajiPokok) ?></td>
                 </tr>
               </table>
               <h3>Tunjangan</h3>
               <table class="table table-bordered table-striped">
                 <tr>
                   <td>Istri</td>
-                  <td><?php echo rupiah($u->tjIstri) ?></td>
+                  <td><?php $tjIstri = $u->tjIstri;  echo rupiah($tjIstri) ?></td>
                 </tr>
                 <tr>
                   <td>Anak</td>
-                  <td><?php echo rupiah($u->tjAnak) ?></td>
+                  <td><?php $tjAnak = $u->tjAnak; echo rupiah($tjAnak) ?></td>
                 </tr>
                 <tr>
                   <td>UPNS</td>
-                  <td><?php echo rupiah($u->tjUpns) ?></td>
+                  <td><?php $tjUpns = $u->tjUpns; echo rupiah($tjUpns) ?></td>
                 </tr>
                 <tr>
                   <td>Struk</td>
-                  <td><?php echo rupiah($u->tjStruk) ?></td>
+                  <td><?php $tjStruk = $u->tjStruk; echo rupiah($tjStruk) ?></td>
                 </tr>
                 <tr>
                   <td>Fungsi</td>
-                  <td><?php echo rupiah($u->tjFungsi) ?></td>
+                  <td><?php $tjFungsi = $u->tjFungsi; echo rupiah($tjFungsi) ?></td>
                 </tr>
                 <tr>
                   <td>Pencil</td>
-                  <td><?php echo rupiah($u->tjPencil) ?></td>
+                  <td><?php $tjPencil = $u->tjPencil; echo rupiah($tjPencil) ?></td>
                 </tr>
                 <tr>
                   <td>Lain</td>
-                  <td><?php echo rupiah($u->tjLain) ?></td>
+                  <td><?php $tjLain = $u->tjLain; echo rupiah($tjLain) ?></td>
                 </tr>
                 <tr>
                   <td>Kompen</td>
-                  <td><?php echo rupiah($u->tjKompen) ?></td>
+                  <td><?php $tjKompen = $u->tjKompen; echo rupiah($tjKompen) ?></td>
                 </tr>
                 <tr>
                   <td>Beras</td>
-                  <td><?php echo rupiah($u->tjBeras) ?></td>
+                  <td><?php $tjBeras = $u->tjBeras; echo rupiah($tjBeras) ?></td>
                 </tr>
                 <tr>
                   <td>Pph</td>
-                  <td><?php echo rupiah($u->tjPph) ?></td>
+                  <td><?php $tjPph = $u->tjPph; echo rupiah($tjPph) ?></td>
                 </tr>
                 <tr>
                   <td>Pembul</td>
-                  <td><?php echo rupiah($u->pembul) ?></td>
+                  <td><?php $pembul = $u->pembul; echo rupiah($pembul) ?></td>
                 </tr>
                 <tr>
                   <td>UPNS</td>
-                  <td><?php echo rupiah($u->tjUpns) ?></td>
+                  <td><?php $tjUpns = $u->tjUpns; echo rupiah($tjUpns) ?></td>
+                </tr>
+                <tr>
+                  <td>UPNS</td>
+                  <td><?php $tjUpns = $u->tjUpns; echo rupiah($tjUpns) ?></td>
+                </tr>
+              </table>
+                <hr>
+              <table class="table table-bordered table-striped">
+                <tr>
+                  <th>Total Gaji </th>
+                  <th><?php
+                  $totalGaji = ($gajiPokok+$tjIstri+$tjAnak+$tjStruk+$tjFungsi+$tjPencil+$tjLain+$tjKompen+$tjBeras+$tjPph+$pembul+$tjUpns);
+                  echo rupiah($totalGaji); ?></th>
                 </tr>
               </table>
           </div>

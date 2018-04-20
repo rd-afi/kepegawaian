@@ -23,7 +23,23 @@ $this->load->view('template/sidebar');
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab_1" data-toggle="tab">Tabel Data Akun</a></li>
       <li><a href="#tab_2" data-toggle="tab">Tambah Akun</a></li>
+      <?php
+      // echo $this->session->userdata('pesan_sukses');
+      ?>
     </ul>
+    <?php
+    // $pesan = $this->session->flashdata('pesan_sukses');
+    $tmpuname = $this->session->flashdata('tmpuname');
+    $tmppass = $this->session->flashdata('tmppass');
+    if($this->session->userdata('tmpuname') != ""){
+      ?>
+      <script type="text/javascript">
+        swal("Mohon Informasikan", "<?php echo 'Username : '.$this->session->userdata('tmpuname').
+              '\n Password : '.$this->session->userdata('tmppass'); ?>", "warning");
+      </script>
+      <?php
+      }
+     ?>
     <!-- TAB 1 -->
     <div class="tab-content">
       <div class="tab-pane active" id="tab_1">
@@ -95,21 +111,6 @@ $this->load->view('template/sidebar');
         <div class="box-body">
           <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                <div class="panel box box-primary">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <!-- TAMBAH AKUN ADMIN -->
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Tambah Akun Admin
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="box-body">
-
-                    </div>
-                  </div>
-                </div>
                 <div class="panel box box-danger">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -237,6 +238,11 @@ $this->load->view('template/foot');
     $('.modal-title').text('Tambah Akun'); // Set Title to Bootstrap modal title
     $('#nusername').val($('#nuname').val());
     $('#npassword').val($('#nuname').val());
+    // alertify.alert("Username : ".$('#nusername').val()."<br>".."Password : ".$('#npassword').val()."<br>");
+  }
+
+  function sukses() {
+    alert("Sukses");
   }
 
   function showpass() {
@@ -266,39 +272,8 @@ $this->load->view('template/foot');
     }
   }
 
-
-
   $(document).ready(function(){
     $('#myTable').DataTable();
-
-    tampil_data_akun();   //pemanggilan fungsi tampil barang.
-
-        //fungsi tampil barang
-        function tampil_data_akun(){
-            $.ajax({
-                type  : 'ajax',
-                url   : '<?php echo base_url()?>index.php/barang/data_barang',
-                async : false,
-                dataType : 'json',
-                success : function(data){
-                    var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<tr>'+
-                                '<td>'+data[i].barang_kode+'</td>'+
-                                '<td>'+data[i].barang_nama+'</td>'+
-                                '<td>'+data[i].barang_harga+'</td>'+
-                                '<td style="text-align:right;">'+
-                                    '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="'+data[i].barang_kode+'">Edit</a>'+' '+
-                                    '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="'+data[i].barang_kode+'">Hapus</a>'+
-                                '</td>'+
-                                '</tr>';
-                    }
-                    $('#show_data').html(html);
-                }
-
-            });
-        }
 
   });
 
@@ -312,7 +287,7 @@ $this->load->view('template/foot');
                 <h3 class="modal-title">Tambah Akun</h3>
             </div>
             <div class="modal-body form">
-                <form action="<?php echo base_url(). 'akun/tambahAkunPegawai'; ?>" id="form" class="form-horizontal" method="post">
+                <form action="<?php echo base_url(). 'akun/tambahAkunPegawai'; ?>" id="formpegawai" class="form-horizontal" method="post">
                     <!-- <input type="hidden" value="" name="nip"/> -->
                     <div class="form-body">
                         <div class="form-group">
@@ -357,7 +332,7 @@ $this->load->view('template/foot');
                 <h3 class="modal-title">Tambah Akun</h3>
             </div>
             <div class="modal-body form">
-                <form action="<?php echo base_url(). 'akun/tambahAkunNonPegawai'; ?>" id="form" class="form-horizontal" method="post">
+                <form action="<?php echo base_url(). 'akun/tambahAkunNonPegawai'; ?>" id="formnonpegawai" class="form-horizontal" method="post">
                     <!-- <input type="hidden" value="" name="nip"/> -->
                     <div class="form-body">
                         <div class="form-group">

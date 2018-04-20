@@ -41,6 +41,11 @@ class akun extends CI_Controller {
 			'status' => '1'
 		);
 		$this->m_akun->input_data($data,'user');
+		$pesan = array(
+        'tmpuname'  => $username,
+        'tmppass'   => $password
+			);
+		$this->session->set_tempdata($pesan, NULL, 60);
 		redirect('akun');
 	}
 
@@ -56,6 +61,11 @@ class akun extends CI_Controller {
 			'status' => '1'
 		);
 		$this->m_akun->input_data($data,'user');
+		$pesan = array(
+        'tmpuname'  => $username,
+        'tmppass'   => $password
+			);
+		$this->session->set_tempdata($pesan, NULL, 60);
 		redirect('akun');
 	}
 

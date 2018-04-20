@@ -5,7 +5,12 @@
         <title>Kepegawaian</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Sweetalert -->
-        <link href="<?php echo base_url('assets/template/plugins/sweetalert/src/sweetalert.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url('assets/template/plugins/bootstrap-sweetalert/dist/sweetalert.min.css') ?>" rel="stylesheet" type="text/css" />
+        <script src="<?php echo base_url('assets/template/plugins/bootstrap-sweetalert/dist/sweetalert.min.js') ?>" type="text/javascript"></script>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> -->
+        <!-- Alertify.js -->
+        <link href="<?php echo base_url('assets/template/plugins/alertify.js/dist/css/alertify.css') ?>" rel="stylesheet" type="text/css" />
         <!-- Bootstrap 3.3.2 -->
         <link href="<?php echo base_url('assets/template/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->

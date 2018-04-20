@@ -118,6 +118,12 @@ class datapegawai_P extends CI_Controller {
 		$this->load->view('detailgaji_P',$data);
 	}
 
+	function print_gaji($nip){
+		$where = array('nip' => $nip);
+		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
+		$this->load->view('printdetailgaji_P',$data);
+	}
+
 	function report($nip){
 		$this->load->library('pdf');
 
@@ -126,7 +132,7 @@ class datapegawai_P extends CI_Controller {
 
 		$this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "laporan.pdf";
-    $this->pdf->load_view('printdetailpegawai', $data);
+    $this->pdf->load_view('printdetailgaji_P', $data);
 	}
 
 

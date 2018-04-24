@@ -158,6 +158,7 @@ function edit_tunjangan(id)
         {
 
             $('[name="id"]').val(data.id);
+            $('[name="kdPangkat"]').val(data.kdPangkat);
             $('[name="cbPangkat"]').val(data.namaPangkat);
             $('[name="gajiPokok"]').val(data.gajiPokok);
             $('[name="tjIstri"]').val(data.tjIstri);
@@ -197,7 +198,7 @@ function save()
 
     if(save_method == 'add') {
         url = "<?php echo site_url('tunjangan/ajax_add')?>";
-    } else {
+    } else if (save_method == 'update') {
         url = "<?php echo site_url('tunjangan/ajax_update')?>";
     }
 
@@ -213,6 +214,49 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 $('#modal_form').modal('hide');
+                reload_table();
+            }
+
+            $('#btnSave').text('save'); //change button text
+            $('#btnSave').attr('disabled',false); //set button enable
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+            $('#btnSave').text('save'); //change button text
+            $('#btnSave').attr('disabled',false); //set button enable
+
+        }
+    });
+}
+
+
+function save_update()
+{
+    $('#btnSave').text('saving...'); //change button text
+    $('#btnSave').attr('disabled',true); //set button disable
+    var url;
+
+    if(save_method == 'update') {
+      url = "<?php echo site_url('tunjangan/ajax_update')?>";
+    } else if (save_method == 'add') {
+      url = "<?php echo site_url('tunjangan/ajax_add')?>";
+    }
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('#form_update').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+
+            if(data.status) //if success close modal and reload ajax table
+            {
+                $('#modal_form_edit').modal('hide');
                 reload_table();
             }
 
@@ -420,13 +464,14 @@ function delete_tunjangan(id)
                 <h3 class="modal-title">Person Form</h3>
             </div>
             <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
+                <form action="#" id="form_update" class="form-horizontal">
                     <input type="hidden" value="" name="id"/>
+                    <input type="hidden" value="" name="kdPangkat" id="kdPangkat"/>
                     <div class="form-body">
                       <div class="form-group">
                         <label class="control-label col-md-3">Pangkat</label>
                         <div class="col-md-9">
-                          <input name="cbPangkat" id="cbPangkat" class="form-control" type="text" disabled>
+                          <input name="cbPangkat" id="cbPangkat" class="form-control" type="text" readonly>
                           <span class="help-block"></span>
                         </div>
                       </div>
@@ -551,7 +596,7 @@ function delete_tunjangan(id)
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" id="btnSave" onclick="save_update()" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div><!-- /.modal-content -->

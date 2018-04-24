@@ -175,14 +175,44 @@ $this->load->view('template/sidebar');
                   <div class="row">
                     <div class="form-group col-xs-4">
                       <label>Ijasah</label>
-                      <input type="text" name="ijasah" id="ijasah" class="form-control" value="<?php echo $u->namaPendidikan?>" placeholder="contoh : S3 Administrasi Pendidikan">
+                      <input type="text" name="ijasah" id="ijasah" class="form-control" value="<?php echo $u->Ijasah?>" placeholder="contoh : S3 Administrasi Pendidikan">
                     </div>
                   </div>
                 </div>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_3">
-                3
+                <div class="box-body">
+                  <div class="row">
+                    <div class="form-group col-xs-4">
+                      <label>NIP Suami</label>
+                      <input type="text" name="nipSuami" id="nipSuami" class="form-control" value="<?php echo $u->nipSuami?>">
+                    </div>
+                    <div class="form-group col-xs-4">
+                      <label>NIP Istri</label>
+                      <input type="text" name="nipIstri" id="nipIstri" class="form-control" value="<?php echo $u->nipIstri?>">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-xs-4">
+                      <label>Nama Suami</label>
+                      <input type="text" name="namaSuami" id="namaSuami" class="form-control" value="<?php echo $u->namaSuami?>">
+                    </div>
+                    <div class="form-group col-xs-4">
+                      <label>Nama Istri</label>
+                      <input type="text" name="namaIstri" id="namaIstri" class="form-control" value="<?php echo $u->namaIstri?>">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-xs-4">
+                      <label>Jumlah Anak</label>
+                      <input type="number" name="jmlAnak" id="jmlAnak" class="form-control" value="<?php echo $u->jmlAnak?>">
+                      <!-- <textarea class="form-control" rows="5" placeholder="1. ......... | Laki-Laki | 2. ......... | Perempuan"></textarea> -->
+                    </div>
+                  </div>
+                  <div class="row">
+                  </div>
+                </div>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_4">

@@ -134,7 +134,6 @@ function edit_pangkat(kdPangkat)
 
             $('[name="kdPangkat"]').val(data.kdPangkat);
             $('[name="namaPangkat"]').val(data.namaPangkat);
-            $('[name="gajiPokok"]').val(data.gajiPokok);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Pangkat'); // Set title to Bootstrap modal title
 
@@ -229,23 +228,22 @@ function delete_pangkat(kdPangkat)
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="kdPangkat"/>
+                    <!-- <input type="hidden" value="" name="kdPangkat"/> -->
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Kode Pangkat</label>
+                            <div class="col-md-9">
+                                <input name="kdPangkat" placeholder="Kode Pangkat" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Nama Pangkat</label>
                             <div class="col-md-9">
                                 <input name="namaPangkat" placeholder="Nama Pangkat" class="form-control" type="text">
                                 <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Gaji Pokok</label>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Rp.</span>
-                                    <input name="gajiPokok" placeholder="Gaji Pokok" class="form-control" type="number">
-                                    <span class="help-block"></span>
-                                </div>
                             </div>
                         </div>
                     </div>

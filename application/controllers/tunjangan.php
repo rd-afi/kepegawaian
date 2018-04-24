@@ -105,7 +105,7 @@ class tunjangan extends CI_Controller {
 	public function ajax_update()
 	{
 		$data = array(
-      // 'kdPangkat' => $this->input->post('cbPangkat'),
+      // 'kdPangkat' => $this->input->post('kdPangkat'),
       'gajiPokok' => $this->input->post('gajiPokok'),
       'tjIstri' => $this->input->post('tjIstri'),
       'tjAnak' => $this->input->post('tjAnak'),

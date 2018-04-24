@@ -67,9 +67,8 @@ class pangkat extends CI_Controller {
 	    } else {
 	      $nomor =  $rows+1;
 		$data = array(
-				'kdPangkat' => $nomor,
-				'namaPangkat' => $this->input->post('namaPangkat'),
-				'gajiPokok' => $this->input->post('gajiPokok')
+				'kdPangkat' => $this->input->post('kdPangkat'),
+				'namaPangkat' => $this->input->post('namaPangkat')
 			);
 	    }
 		$insert = $this->pangkat->save($data);
@@ -79,8 +78,7 @@ class pangkat extends CI_Controller {
 	public function ajax_update()
 	{
 		$data = array(
-				'namaPangkat' => $this->input->post('namaPangkat'),
-				'gajiPokok' => $this->input->post('gajiPokok'),
+				'namaPangkat' => $this->input->post('namaPangkat')
 			);
 		$this->pangkat->update(array('kdPangkat' => $this->input->post('kdPangkat')), $data);
 		echo json_encode(array("status" => TRUE));

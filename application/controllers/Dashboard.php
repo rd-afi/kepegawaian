@@ -19,6 +19,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['jumPegawai'] = $this->db->query('SELECT * FROM pegawai')->num_rows();
+		$data['jumPegawaiNon'] = $this->db->query('SELECT * FROM pegawainon')->num_rows();
 		$data['jumAkun'] = $this->db->query('SELECT * FROM user')->num_rows();
 		$data['jkpnsprg1'] = $this->db->query('SELECT * FROM pegawai WHERE jk = "perempuan" && kdPangkat LIKE "1%"')->num_rows();
 		$data['jkpnslkg1'] = $this->db->query('SELECT * FROM pegawai WHERE jk = "laki-laki" && kdPangkat LIKE "1%"')->num_rows();

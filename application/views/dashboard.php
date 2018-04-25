@@ -62,6 +62,19 @@ $this->load->view('template/sidebar');
           </div><!-- /.info-box -->
         </div><!-- /.col -->
 
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <span class="info-box-icon bg-yellow">
+                <i class="ion ion-ios-people"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Non-Pegawai Terdaftar</span>
+                <h3><?php echo $jumPegawaiNon; ?></h3>
+              </div><!-- /.info-box-content -->
+            </div>
+          </div><!-- /.info-box -->
+        </div><!-- /.col -->
 
     </div><!-- /.row -->
 

@@ -169,7 +169,7 @@ $this->load->view('template/sidebar');
                   <div class="row">
                     <div class="form-group col-xs-2">
                       <label>Tahun</label>
-                      <input type="number" name="tahunPendidikan" id="tahunPendidikan" class="form-control" value="<?php echo $u->namaPendidikan?>" placeholder="contoh : 2002">
+                      <input type="number" name="tahunPendidikan" id="tahunPendidikan" class="form-control" value="<?php echo $u->tahunPendidikan?>" placeholder="contoh : 2002">
                     </div>
                   </div>
                   <div class="row">

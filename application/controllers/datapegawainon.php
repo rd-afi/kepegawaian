@@ -16,7 +16,15 @@ class datapegawainon extends CI_Controller {
 	public function index(){
 		$data['data'] = $this->m_pegawainon->ambil_data()->result();
 		$data['kdPegawai'] = $this->m_pegawainon->getkodeunik();
+		$data['kdJabatanNon'] = $this->db->query("SELECT * FROM jabatannon");
 		$this->load->view('datanonpegawai.php',$data);
+	}
+
+	public function datagajipegawainon(){
+		$data['data'] = $this->m_pegawainon->ambil_data()->result();
+		$data['jabatannon'] = $this->db->query("SELECT * FROM jabatannon");
+		$data['tunjangannon'] = $this->db->query("SELECT * FROM tunjangannon");
+		$this->load->view('datagajipegawainon.php',$data);
 	}
 
 	public function ajax_list()
@@ -55,29 +63,29 @@ class datapegawainon extends CI_Controller {
 		$data = array(
 			'kdPegawai' => $kdPegawai,
 			'nama' => $nama,
-			'jabatan' => $jabatan
+			'kdJabatanNon' => $jabatan
 			);
 		$this->m_pegawainon->input_data($data,'pegawainon');
 		redirect('datapegawainon');
 	}
 
 
-	function hapus($nip){
-		$where = array('nip' => $nip);
-		$this->m_data->hapus_data($where,'pegawai');
+	function hapus($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$this->m_pegawainon->hapus_data($where,'pegawai');
 		redirect('datapegawai');
 	}
 
-	function edit($nip){
+	function edit($kdPegawai){
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
-		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
-		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->edit_data($where,'pegawai')->result();
+		$data['kdJabatanNon'] = $this->db->query("SELECT * FROM jabatannon");
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->edit_data($where,'pegawainon')->result();
 		$this->load->view('editpegawai',$data);
 	}
 
 	function ubah(){
-		$nip = $this->input->post('nip');
+		$kdPegawai = $this->input->post('kdPegawai');
 		$namaPegawai = $this->input->post('namaPegawai');
 		$tempat = $this->input->post('tempat');
 		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
@@ -92,7 +100,7 @@ class datapegawainon extends CI_Controller {
 		$mulJab = date('Y-m-d', strtotime($this->input->post('mulJab')));
 
 		$data = array(
-			'nip' => $nip,
+			'kdPegawai' => $kdPegawai,
 			'namaPegawai' => $namaPegawai,
 			'tempat' => $tempat,
 			'tglLahir' => $ttl,
@@ -107,27 +115,39 @@ class datapegawainon extends CI_Controller {
 			'mulaiJabatan' => $mulJab
 			);
 		$where = array(
-			'nip' => $nip
+			'kdPegawai' => $kdPegawai
 		);
-		$this->m_data->update_data($where,$data,'pegawai');
+		$this->m_pegawainon->update_data($where,$data,'pegawai');
 		redirect('datapegawai');
 	}
 
-	function detail($nip){
-		$where = array('NIP' => $nip);
-		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
+	function detail($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawai'] = $this->m_pegawainon->detail_data($where,'pegawai')->result();
 		$this->load->view('detailpegawai',$data);
 	}
 
-	function report($nip){
+	function detail_gaji($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
+		$this->load->view('detailgaji_nonP',$data);
+	}
+
+	function print_gaji($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
+		$this->load->view('printdetailgaji_nonP',$data);
+	}
+
+	function report($kdPegawai){
 		$this->load->library('pdf');
 
-		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
 
 		$this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "laporan.pdf";
-    $this->pdf->load_view('printdetailpegawai', $data);
+    $this->pdf->load_view('printdetailgaji_nonP', $data);
 	}
 
 

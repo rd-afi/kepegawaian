@@ -66,7 +66,8 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <!-- <li><a href="<?php echo site_url('tunjangan') ?>"><i class="fa fa-circle-o"></i> Tunjangan</a></li> -->
+                    <li><a href="<?php echo site_url('datapegawai/datagajipegawai') ?>"><i class="fa fa-circle-o"></i> PNS</a></li>
+                    <li><a href="<?php echo site_url('datapegawainon/datagajipegawainon') ?>"><i class="fa fa-circle-o"></i> Non-PNS</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -77,9 +78,29 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo site_url('akun') ?>"><i class="fa fa-circle-o"></i> Akun</a></li>
-                    <li><a href="<?php echo site_url('pangkat') ?>"><i class="fa fa-circle-o"></i> Pangkat</a></li>
-                    <li><a href="<?php echo site_url('jabatan') ?>"><i class="fa fa-circle-o"></i> Jabatan</a></li>
-                    <li><a href="<?php echo site_url('tunjangan') ?>"><i class="fa fa-circle-o"></i> Tunjangan</a></li>
+                    <li class="treeview">
+                      <a href="#"><i class="fa fa-gear"></i> PNS
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="<?php echo site_url('pangkat') ?>"><i class="fa fa-circle-o"></i> Pangkat</a></li>
+                        <li><a href="<?php echo site_url('jabatan') ?>"><i class="fa fa-circle-o"></i> Jabatan</a></li>
+                        <li><a href="<?php echo site_url('tunjangan') ?>"><i class="fa fa-circle-o"></i> Tunjangan</a></li>
+                      </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#"><i class="fa fa-gear"></i> Non-PNS
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a href="<?php echo site_url('jabatannon') ?>"><i class="fa fa-circle-o"></i> Jabatan</a></li>
+                        <li><a href="<?php echo site_url('tunjangannon') ?>"><i class="fa fa-circle-o"></i> Tunjangan</a></li>
+                      </ul>
+                    </li>
                 </ul>
             </li>
             </li>

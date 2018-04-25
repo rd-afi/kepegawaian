@@ -5,6 +5,7 @@ class datapegawai extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		$this->load->helper(array('form', 'url'));
 		$this->load->library('datatables');
 		$this->load->model('m_data');
 
@@ -18,6 +19,14 @@ class datapegawai extends CI_Controller {
 		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
 		$this->load->view('datapegawai.php',$data);
+	}
+
+	public function datagajipegawai(){
+		$data['data'] = $this->m_data->ambil_data()->result();
+		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
+		$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
+		$data['tunjangan'] = $this->db->query("SELECT * FROM tunjangan");
+		$this->load->view('datagajipegawai.php',$data);
 	}
 
 	function tambah(){
@@ -130,18 +139,42 @@ class datapegawai extends CI_Controller {
 	function detail_gaji($nip){
 		$where = array('nip' => $nip);
 		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
-		$this->load->view('detailgaji_P',$data);
+		$this->load->view('detailgaji',$data);
+	}
+
+	function print_gaji($nip){
+		$where = array('nip' => $nip);
+		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
+		$this->load->view('printdetailgaji_P',$data);
 	}
 
 	function report($nip){
 		$this->load->library('pdf');
 
 		$where = array('nip' => $nip);
-		$data['pegawai'] = $this->m_data->detail_data($where,'pegawai')->result();
+		$data['pegawai'] = $this->m_data->detail_gaji($where,'pegawai')->result();
 
 		$this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "laporan.pdf";
-    $this->pdf->load_view('printdetailpegawai', $data);
+    $this->pdf->load_view('printdetailgaji_P', $data);
+	}
+
+	public function aksi_upload(){
+		$config['upload_path']          = './berkas/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 100;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('berkas')){
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('v_upload', $error);
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+			$this->load->view('v_upload_sukses', $data);
+		}
 	}
 
 

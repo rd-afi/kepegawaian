@@ -42,7 +42,7 @@ $this->load->view('template/sidebar');
               <tr>
                 <td><?php echo $u->kdPegawai ?></td>
                 <td><?php echo $u->nama ?></td>
-                <td><?php echo $u->jabatan ?></td>
+                <td><?php echo $u->namaJabatanNon ?></td>
                 <td>
                   <!-- <a class="btn btn-sm btn-primary" title="Detail" href="datapegawai/detail/<?php echo $u->kdPegawai ?>">Detail</a> -->
                 </td>
@@ -81,7 +81,15 @@ $this->load->view('template/sidebar');
             <div class="row">
               <div class="form-group col-xs-5">
                   <label>Jabatan</label>
-                  <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan">
+                  <select class="form-control" name="jabatan" id="jabatan">
+                    <option>Pilih Jabatan</option>
+                    <?php foreach($kdJabatanNon->result_array() as $row) {?>
+                      <option name="jab" id="jab" value="<?php echo $row['kdJabatanNon'];?>">
+                      <?php echo $row['namaJabatanNon']?>
+                      </option>
+                    <?php }?>
+                  </select>
+                  <!-- <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan"> -->
               </div>
             </div>
             <br>

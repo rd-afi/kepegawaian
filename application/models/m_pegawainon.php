@@ -11,7 +11,8 @@ class m_pegawainon extends CI_Model{
 	}
 
 	function ambil_data(){
-		$this->db->select('*');
+		$this->db->select('*')
+		->join('jabatannon','jabatannon.kdJabatanNon=pegawainon.kdJabatanNon');
 		return $this->db->get('pegawainon');
 	}
 
@@ -72,6 +73,13 @@ class m_pegawainon extends CI_Model{
 	function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
+	}
+
+	function detail_gaji($where,$table){
+		$this->db->select('*')
+		->join('jabatannon','jabatannon.kdJabatanNon=pegawainon.kdJabatanNon')
+		->join('tunjangannon','tunjangannon.id=jabatannon.kdJabatanNon');
+		return $this->db->get_where($table,$where);
 	}
 
 }

@@ -40,7 +40,7 @@
             <td><?php $gajiPokok = $u->gajiPokok; echo rupiah($gajiPokok) ?></td>
           </tr>
         </table>
-        <h3>Tunjangan</h3>
+        <h3>Potongan</h3>
         <table class="table table-bordered table-striped">
           <tr>
             <td>BPJS</td>

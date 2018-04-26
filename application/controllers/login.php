@@ -26,7 +26,7 @@ class Login extends CI_Controller{
 		$role = '';
 		$where = array(
 			'username' => $username,
-			'password' => md5($password)
+			'password' => $password
 			);
 		$cek = $this->m_login->cek_login("user",$where);
 		$cekrole = $this->m_login->cek_login("user",$where)->result();

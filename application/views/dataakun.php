@@ -44,7 +44,7 @@ $this->load->view('template/sidebar');
     <div class="tab-content">
       <div class="tab-pane active" id="tab_1">
         <div class="box-body">
-          <table class="table table-striped table-bordered table-hover" id="myTable">
+          <table class="table table-striped table-bordered table-hover" id="tableakun">
             <thead>
               <tr>
                 <th>No</th>
@@ -55,42 +55,16 @@ $this->load->view('template/sidebar');
               </tr>
             </thead>
             <tbody>
-              <?php $i = 1; foreach($data as $u){ ?>
               <tr>
-                <td><?php echo $i ?>
-                  <input type="hidden" id="vuname" name="vuname" value="<?php echo $username = $u->username ?>"/>
-                  <input type="hidden" id="vpass" name="vpass" value="<?php echo $u->password ?>"/>
-                  <input type="hidden" id="vrole" name="vrole" value="<?php echo $u->role ?>"/>
-                  <input type="hidden" id="vstatus" name="vstatus" value="<?php echo $u->status ?>"/>
+
                 </td>
-                <td><?php echo $u->username ?></td>
-                <td><?php
-                $role = $u->role;
-                if ($role == 0) {
-                  $role = 'Admin';
-                } elseif ($role == 1) {
-                  $role = 'Pegawai';
-                } elseif ($role == 2) {
-                  $role = 'Non-Pegawai';
-                } else {
-                  $role = '---';
-                }
-                echo $role ?></td>
-                <td><?php
-                $status = $u->status;
-                if ($status == 0) {
-                  $status = '<a class="btn btn-sm bg-red">Non-Aktif</a>';
-                } else {
-                  $status = '<a class="btn btn-sm bg-orange">Aktif</a>';
-                }
-                echo $status ?></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
-                  <a class="btn btn-sm btn-primary" title="Ubah Data Akun" onclick="ubahDataAkun()">Ubah Data</a>
-                  <a class="btn btn-sm btn-danger" href="<?php echo base_url(). 'akun/hapus/' . $u->username; ?>"
-                    onclick="javascript: return confirm('Anda yakin hapus ?')"> Hapus <i class="glyphicon glyphicon-trash"></i></a>
+
                 </td>
               </tr>
-              <?php $i++; } ?>
             </tbody>
             <tfoot>
               <tr>
@@ -122,7 +96,7 @@ $this->load->view('template/sidebar');
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
-                      <table class="table table-striped table-bordered" id="myTable">
+                      <table class="table table-striped table-bordered" id="tabelpns">
                         <thead>
                           <tr>
                             <tr>
@@ -142,7 +116,7 @@ $this->load->view('template/sidebar');
                             <td><?php echo $u->namaPegawai ?></td>
                             <td><?php echo $u->namaPangkat ?></td>
 
-                            <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="addAkunPegawai()">Buat Akun</a></td>
+                            <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="addAkunPegawai('<?php echo $u->nip ?>')">Buat Akun</a></td>
                             <!-- <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="buatAkunPegawai(".'"'.<?php echo $u->nip ?>.'"'.")">Buat Akun</a></td> -->
                             <!-- onclick="edit_pangkat('."'".$pangkat->kdPangkat."'".')" -->
                           </tr
@@ -166,7 +140,7 @@ $this->load->view('template/sidebar');
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
-                      <table class="table table-striped table-bordered" id="myTable">
+                      <table class="table table-striped table-bordered" id="tabelnon">
                         <thead>
                           <tr>
                             <tr>
@@ -180,13 +154,13 @@ $this->load->view('template/sidebar');
                           <?php foreach($akunPegawaiNon as $u){ ?>
                           <tr>
                             <td>
-                              <?php echo $u->kdPegawai ?>
-                              <input type="hidden" id="nuname" name="nuname" value="<?php echo $u->kdPegawai ?>"/>
+                              <?php $kdPegawai = $u->kdPegawai; echo $kdPegawai  ?>
+                              <input type="hidden" id="nuname" name="nuname" value="<?php echo $kdPegawai ?>"/>
                             </td>
                             <td><?php echo $u->nama ?></td>
                             <td><?php echo $u->namaJabatanNon ?></td>
 
-                            <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="addAkunNonPegawai()">Buat Akun</a></td>
+                            <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="addAkunNonPegawai('<?php echo $kdPegawai; ?>')">Buat Akun</a></td>
                           </tr
                           <?php } ?>
                         </tbody>
@@ -216,7 +190,7 @@ $this->load->view('template/foot');
 
 <script type="text/javascript">
 
-  function addAkunPegawai()
+  function addAkunPegawai($nip)
   {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
@@ -224,11 +198,13 @@ $this->load->view('template/foot');
     $('.help-block').empty(); // clear error string
     $('#Pegawai').modal('show'); // show bootstrap modal
     $('.modal-title').text('Tambah Akun'); // Set Title to Bootstrap modal title
-    $('#username').val($('#uname').val());
-    $('#password').val($('#uname').val());
+    $('#username').val($nip);
+    $('#password').val($nip);
+    // $('#username').val($('#uname').val());
+    // $('#password').val($('#uname').val());
   }
 
-  function addAkunNonPegawai()
+  function addAkunNonPegawai($kdPegawai)
   {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
@@ -236,13 +212,95 @@ $this->load->view('template/foot');
     $('.help-block').empty(); // clear error string
     $('#NonPegawai').modal('show'); // show bootstrap modal
     $('.modal-title').text('Tambah Akun'); // Set Title to Bootstrap modal title
-    $('#nusername').val($('#nuname').val());
-    $('#npassword').val($('#nuname').val());
+    $('#nusername').val($kdPegawai);
+    $('#npassword').val($kdPegawai);
+    // $('#nusername').val($('#nuname').val());
+    // $('#npassword').val($('#nuname').val());
     // alertify.alert("Username : ".$('#nusername').val()."<br>".."Password : ".$('#npassword').val()."<br>");
   }
 
-  function sukses() {
-    alert("Sukses");
+  function ubahDataAkun(username)
+  {
+      save_method = 'update';
+      $('#form')[0].reset(); // reset form on modals
+      $('.form-group').removeClass('has-error'); // clear error class
+      $('.help-block').empty(); // clear error string
+
+      //Ajax Load data from ajax
+      $.ajax({
+          url : "<?php echo site_url('akun/ajax_edit/')?>" + username,
+          type: "GET",
+          dataType: "JSON",
+          success: function(data)
+          {
+
+              $('[name="eusername"]').val(data.username);
+              $('[name="epassword"]').val(data.password);
+              if (data.role == 0) {
+                $('[name="erole"]').val("Admin");
+              } else if (data.role == 1) {
+                $('[name="erole"]').val("Pegawai");
+              } else {
+                $('[name="erole"]').val("Non-Pegawai");
+              }
+              if (data.status == '1'){
+                $('[name="cbStatus"]').val('Aktif');
+              } else {
+                $('[name="cbStatus"]').val('Non-Aktif');
+              }
+              $('#modal_ubah').modal('show'); // show bootstrap modal when complete loaded
+              $('.modal-title').text('Edit Pangkat'); // Set title to Bootstrap modal title
+
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert('Error get data from ajax');
+          }
+      });
+  }
+
+  function save()
+  {
+      $('#btnSave').text('Menyimpan...'); //change button text
+      $('#btnSave').attr('disabled',true); //set button disable
+      var url;
+
+      url = "<?php echo site_url('akun/ajax_update')?>";
+
+      // ajax adding data to database
+      $.ajax({
+          url : url,
+          type: "POST",
+          data: $('#form').serialize(),
+          dataType: "JSON",
+          success: function(data)
+          {
+
+              if(data.status) //if success close modal and reload ajax table
+              {
+                  $('#modal_ubah').modal('hide');
+                  reload_table();
+              }
+
+              $('#btnSave').text('save'); //change button text
+              $('#btnSave').attr('disabled',false); //set button enable
+
+
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert('Error adding / update data');
+              $('#btnSave').text('save'); //change button text
+              $('#btnSave').attr('disabled',false); //set button enable
+
+          }
+      });
+  }
+
+
+  function reload_table()
+  {
+      table.ajax.reload(null,false); //reload datatable ajax
   }
 
   function showpass() {
@@ -272,8 +330,55 @@ $this->load->view('template/foot');
     }
   }
 
+  function delete_akun(username)
+  {
+      if(confirm('Are you sure delete this data?'))
+      {
+          // ajax delete data to database
+          $.ajax({
+              url : "<?php echo site_url('akun/ajax_delete')?>/"+username,
+              type: "POST",
+              dataType: "JSON",
+              success: function(data)
+              {
+                  //if success reload ajax table
+                  // redirect('akun');
+                  // $('#modal_ubah').modal('hide');
+                  reload_table();
+              },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+                  alert('Error deleting data');
+              }
+          });
+
+      }
+  }
+
   $(document).ready(function(){
-    $('#myTable').DataTable();
+    $('#tabelpns').DataTable({"pageLength": 5 });
+    $('#tabelnon').DataTable({"pageLength": 5 });
+    table = $('#tableakun').DataTable({
+
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('akun/ajax_list')?>",
+            "type": "POST"
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        {
+            "targets": [ -1 ], //last column
+            "orderable": false, //set not orderable
+        },
+        ],
+
+    });
 
   });
 
@@ -371,7 +476,7 @@ $this->load->view('template/foot');
 
 <!-- ACTION UBAH -->
 <!-- Bootstrap modal -->
-<div class="modal fade" id="ubah" role="dialog">
+<div class="modal fade" id="modal_ubah" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -385,7 +490,7 @@ $this->load->view('template/foot');
                         <div class="form-group">
                             <label class="control-label col-md-3">Username</label>
                             <div class="col-md-9">
-                                <input name="eusername" id="eusername" class="form-control" type="text">
+                                <input name="eusername" id="eusername" class="form-control" type="text" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -402,13 +507,17 @@ $this->load->view('template/foot');
                         <div class="form-group">
                             <label class="control-label col-md-3">Role</label>
                             <div class="col-md-9">
-                                <input name="erole" id="erole" class="form-control" type="text">
+                                <input name="erole" id="erole" class="form-control" type="text" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Status</label>
                             <div class="col-md-9">
-                                <input name="estatus" id="estatus" class="form-control" type="text">
+                              <select class="form-control" name="cbStatus" id="cbStatus">
+                                <option name="cbaktif" id="cbaktif">Aktif</option>
+                                <option name="cbnonaktif" id="cbnonaktif">Non-Aktif</option>
+                              </select>
+                                <!-- <input name="estatus" id="estatus" class="form-control" type="text"> -->
                             </div>
                         </div>
                     </div>
@@ -416,7 +525,7 @@ $this->load->view('template/foot');
             <div class="modal-footer">
                 <!-- <button type="submit" class="btn btn-primary">Save</button> -->
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <input type="submit" class="btn btn-success btn pull-right" value="Simpan Akun" name="simpan">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-success btn pull-right">Simpan</button>
             </div>
           </form>
         </div><!-- /.modal-content -->

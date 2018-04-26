@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2018 at 06:41 AM
+-- Generation Time: Apr 26, 2018 at 09:51 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -215,7 +215,8 @@ CREATE TABLE `tunjangannon` (
 --
 
 INSERT INTO `tunjangannon` (`id`, `kdJabatanNon`, `gajiPokok`) VALUES
-(1, 1, 3500000);
+(1, 1, 3500000),
+(2, 2, 100000);
 
 -- --------------------------------------------------------
 
@@ -235,10 +236,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
-('196103061991032002', '790e361e069c52f5c1356acd251966f4', '1', 1),
-('admin', '21232f297a57a5a743894a0e4a801fc3', '0', 1),
-('P001', '33efbb16ece8550ff8eff9fd435442fc', '2', 1),
-('P002', '8208a34c870ec1cddb1b092f464b3392', '2', 1);
+('196103061991032002', '196103061991032002', '1', 1),
+('admin', 'admin', '0', 1),
+('P001', '001123', '2', 1),
+('P002', 'P002', '2', 1);
 
 --
 -- Indexes for dumped tables
@@ -325,7 +326,7 @@ ALTER TABLE `tunjangan`
 -- AUTO_INCREMENT for table `tunjangannon`
 --
 ALTER TABLE `tunjangannon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

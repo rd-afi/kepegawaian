@@ -45,7 +45,8 @@ class m_pegawainon extends CI_Model{
 	}
 
 	function detail_data($where,$table){
-		$this->db->select('*');
+		$this->db->select('*')
+		->join('jabatannon','jabatannon.kdJabatanNon=pegawainon.kdJabatanNon');
 		return $this->db->get_where($table,$where);
 	}
 

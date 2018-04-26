@@ -33,6 +33,7 @@ $this->load->view('template/sidebar');
               <tr>
                 <th>No</th>
                 <th>Nama Pegawai</th>
+                <th>Jenis Kelamin</th>
                 <th>Jabatan</th>
                 <th></th>
               </tr>
@@ -42,9 +43,10 @@ $this->load->view('template/sidebar');
               <tr>
                 <td><?php echo $u->kdPegawai ?></td>
                 <td><?php echo $u->nama ?></td>
+                <td><?php echo $u->jkNon ?></td>
                 <td><?php echo $u->namaJabatanNon ?></td>
                 <td>
-                  <!-- <a class="btn btn-sm btn-primary" title="Detail" href="datapegawai/detail/<?php echo $u->kdPegawai ?>">Detail</a> -->
+                  <a class="btn btn-sm btn-primary" title="Detail" href="datapegawainon/detail/<?php echo $u->kdPegawai ?>">Detail</a>
                 </td>
               </tr>
               <?php } ?>
@@ -53,6 +55,7 @@ $this->load->view('template/sidebar');
               <tr>
                 <th>No</th>
                 <th>Nama Pegawai</th>
+                <th>Jenis Kelamin</th>
                 <th>Jabatan</th>
                 <th></th>
               </tr>
@@ -76,6 +79,23 @@ $this->load->view('template/sidebar');
               <div class="form-group col-xs-5">
                 <label>Nama Pegawai</label>
                 <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Pegawai">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5">
+                <label>Jenis Kelamin</label>
+                <div class="form-group">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="rbJk" id="lk" class="flat-blue" value="Laki-Laki">
+                      Laki-Laki
+                    </label>
+                    <label>
+                      <input type="radio" name="rbJk" id="pr" class="flat-blue" value="Perempuan">
+                      Perempuan
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row">

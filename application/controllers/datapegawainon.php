@@ -58,11 +58,13 @@ class datapegawainon extends CI_Controller {
 	function tambah(){
 		$kdPegawai = $this->input->post('kdPegawai');
 		$nama = $this->input->post('nama');
+		$jk = $this->input->post('rbJk');
 		$jabatan = $this->input->post('jabatan');
 
 		$data = array(
 			'kdPegawai' => $kdPegawai,
 			'nama' => $nama,
+			'jkNon' => $jk,
 			'kdJabatanNon' => $jabatan
 			);
 		$this->m_pegawainon->input_data($data,'pegawainon');
@@ -77,54 +79,35 @@ class datapegawainon extends CI_Controller {
 	}
 
 	function edit($kdPegawai){
-		$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
-		$data['kdJabatanNon'] = $this->db->query("SELECT * FROM jabatannon");
+		$data['jabatan'] = $this->db->query("SELECT * FROM jabatannon");
 		$where = array('kdPegawai' => $kdPegawai);
-		$data['pegawainon'] = $this->m_pegawainon->edit_data($where,'pegawainon')->result();
-		$this->load->view('editpegawai',$data);
+		$data['pegawai'] = $this->m_pegawainon->edit_data($where,'pegawainon')->result();
+		$this->load->view('editpegawainon',$data);
 	}
 
 	function ubah(){
 		$kdPegawai = $this->input->post('kdPegawai');
-		$namaPegawai = $this->input->post('namaPegawai');
-		$tempat = $this->input->post('tempat');
-		$ttl = date('Y-m-d', strtotime($this->input->post('ttl')));
-		$agama = $this->input->post('cbAgama');
+		$nama = $this->input->post('nama');
 		$jk = $this->input->post('rbJk');
-		$alamat = $this->input->post('alamat');
-		$telepon = $this->input->post('telepon');
-		$pangkat = $this->input->post('cbPangkat');
-		$tmtPang = date('Y-m-d', strtotime($this->input->post('tmtPang')));
 		$jabatan = $this->input->post('cbJabatan');
-		$tmtJab = date('Y-m-d', strtotime($this->input->post('tmtJab')));
-		$mulJab = date('Y-m-d', strtotime($this->input->post('mulJab')));
 
 		$data = array(
 			'kdPegawai' => $kdPegawai,
-			'namaPegawai' => $namaPegawai,
-			'tempat' => $tempat,
-			'tglLahir' => $ttl,
-			'agama' => $agama,
-			'jk' => $jk,
-			'alamat' => $alamat,
-			'telepon' => $telepon,
-			'kdPangkat' => $pangkat,
-			'tmtPangkat' => $tmtPang,
-			'kdJabatan' => $jabatan,
-			'tmtJabatan' => $tmtJab,
-			'mulaiJabatan' => $mulJab
+			'nama' => $nama,
+			'jkNon' => $jk,
+			'kdJabatanNon' => $jabatan
 			);
 		$where = array(
 			'kdPegawai' => $kdPegawai
 		);
-		$this->m_pegawainon->update_data($where,$data,'pegawai');
-		redirect('datapegawai');
+		$this->m_pegawainon->update_data($where,$data,'pegawainon');
+		redirect('datapegawainon');
 	}
 
 	function detail($kdPegawai){
 		$where = array('kdPegawai' => $kdPegawai);
-		$data['pegawai'] = $this->m_pegawainon->detail_data($where,'pegawai')->result();
-		$this->load->view('detailpegawai',$data);
+		$data['pegawai'] = $this->m_pegawainon->detail_data($where,'pegawainon')->result();
+		$this->load->view('detailpegawainon',$data);
 	}
 
 	function detail_gaji($kdPegawai){

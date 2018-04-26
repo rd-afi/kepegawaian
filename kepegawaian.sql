@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2018 at 06:13 AM
+-- Generation Time: Apr 26, 2018 at 06:41 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -150,6 +150,7 @@ INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `ala
 CREATE TABLE `pegawainon` (
   `kdPegawai` varchar(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
+  `jkNon` varchar(10) NOT NULL,
   `kdJabatanNon` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,12 +158,13 @@ CREATE TABLE `pegawainon` (
 -- Dumping data for table `pegawainon`
 --
 
-INSERT INTO `pegawainon` (`kdPegawai`, `nama`, `kdJabatanNon`) VALUES
-('P001', 'Riyanto', 1),
-('P002', 'Deni Kustiana', 1),
-('P003', 'Ujang Kartomi', 1),
-('P004', 'Budi', 1),
-('P005', 'Adi', 1);
+INSERT INTO `pegawainon` (`kdPegawai`, `nama`, `jkNon`, `kdJabatanNon`) VALUES
+('P001', 'Riyanto', 'Laki-Laki', 2),
+('P002', 'Deni Kustiana', 'Laki-Laki', 2),
+('P003', 'Ujang Kartomi', 'Laki-Laki', 1),
+('P004', 'Budi', 'Laki-Laki', 1),
+('P005', 'Adi', 'Laki-Laki', 1),
+('P006', 'Ria', 'Perempuan', 1);
 
 -- --------------------------------------------------------
 
@@ -234,7 +236,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
 ('196103061991032002', '790e361e069c52f5c1356acd251966f4', '1', 1),
-('196905151992032009', '0b823b7d9e9cb5216f49c6ead8dde178', '1', 1),
 ('admin', '21232f297a57a5a743894a0e4a801fc3', '0', 1),
 ('P001', '33efbb16ece8550ff8eff9fd435442fc', '2', 1),
 ('P002', '8208a34c870ec1cddb1b092f464b3392', '2', 1);
@@ -324,7 +325,7 @@ ALTER TABLE `tunjangan`
 -- AUTO_INCREMENT for table `tunjangannon`
 --
 ALTER TABLE `tunjangannon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

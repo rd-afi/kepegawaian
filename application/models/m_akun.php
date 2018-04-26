@@ -92,7 +92,7 @@ class m_akun extends CI_Model{
 	 }
 
 	 public function get_pegawai_non(){
-		 $query=$this->db->query("SELECT * FROM pegawainon a WHERE NOT EXISTS (SELECT * FROM user WHERE a.kdPegawai = user.username)");
+		 $query=$this->db->query("SELECT * FROM pegawainon a join jabatannon b on (a.kdJabatanNon = b.kdJabatanNon) WHERE NOT EXISTS (SELECT * FROM user WHERE a.kdPegawai = user.username)");
 		 return $query;
 	 }
 

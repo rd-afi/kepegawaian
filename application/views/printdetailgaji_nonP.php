@@ -40,16 +40,19 @@
             <td><?php $gajiPokok = $u->gajiPokok; echo rupiah($gajiPokok) ?></td>
           </tr>
         </table>
-        <!-- <h3>Tunjangan</h3>
+        <h3>Tunjangan</h3>
         <table class="table table-bordered table-striped">
-
-        </table> -->
+          <tr>
+            <td>BPJS</td>
+            <td> - <?php $bpjs = 64000; echo rupiah($bpjs) ?> </td>
+          </tr>
+        </table>
           <hr>
         <table class="table table-bordered table-striped">
           <tr>
             <th>Total Gaji </th>
             <th><?php
-            $totalGaji = ($gajiPokok);
+            $totalGaji = ($gajiPokok-$bpjs);
             echo rupiah($totalGaji); ?></th>
           </tr>
         </table>

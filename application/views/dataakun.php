@@ -184,7 +184,7 @@ $this->load->view('template/sidebar');
                               <input type="hidden" id="nuname" name="nuname" value="<?php echo $u->kdPegawai ?>"/>
                             </td>
                             <td><?php echo $u->nama ?></td>
-                            <td><?php echo $u->jabatan ?></td>
+                            <td><?php echo $u->namaJabatanNon ?></td>
 
                             <td><a class="btn btn-sm btn-primary" title="Buat Akun" onclick="addAkunNonPegawai()">Buat Akun</a></td>
                           </tr

@@ -34,7 +34,7 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-                <a href="<?php echo site_url('dashPegawai') ?>">
+                <a href="<?php echo site_url('dashNonPegawai') ?>">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class=""></i>
                 </a>
             </li>
@@ -45,7 +45,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php $nip = $this->session->userdata("username"); echo site_url('datapegawai_P/detail/'. $nip .'') ?>"><i class="fa fa-circle-o"></i> Pegawai</a></li>
+                    <li><a href="<?php $nip = $this->session->userdata("username"); echo site_url('dashNonPegawai/detail/'. $nip .'') ?>"><i class="fa fa-circle-o"></i> Pegawai</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -55,7 +55,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php $nip = $this->session->userdata("username"); echo site_url('datapegawai_P/detail_gaji/'. $nip .'') ?>"><i class="fa fa-circle-o"></i> Gaji & Tunjangan</a></li>
+                    <li><a href="<?php $nip = $this->session->userdata("username"); echo site_url('dashNonPegawai/detail_gaji/'. $nip .'') ?>"><i class="fa fa-circle-o"></i> Gaji & Tunjangan</a></li>
                 </ul>
             </li>
             <!-- <li class="treeview">

@@ -68,6 +68,7 @@ class datapegawai_P extends CI_Controller {
 		$this->load->view('editpegawai_P',$data);
 	}
 
+
 	function ubah(){
 		$nip = $this->input->post('nip');
 		$namaPegawai = $this->input->post('namaPegawai');
@@ -82,6 +83,14 @@ class datapegawai_P extends CI_Controller {
 		$jabatan = $this->input->post('cbJabatan');
 		$tmtJab = date('Y-m-d', strtotime($this->input->post('tmtJab')));
 		$mulJab = date('Y-m-d', strtotime($this->input->post('mulJab')));
+		$namaPendidikan = $this->input->post('namaPendidikan');
+		$tahunPendidikan = $this->input->post('tahunPendidikan');
+		$ijasah = $this->input->post('ijasah');
+		$nipSuami = $this->input->post('nipSuami');
+		$namaSuami = $this->input->post('namaSuami');
+		$nipIstri = $this->input->post('nipIstri');
+		$namaIstri = $this->input->post('namaIstri');
+		$jmlAnak = $this->input->post('jmlAnak');
 
 		$data = array(
 			'nip' => $nip,
@@ -96,14 +105,21 @@ class datapegawai_P extends CI_Controller {
 			'tmtPangkat' => $tmtPang,
 			'kdJabatan' => $jabatan,
 			'tmtJabatan' => $tmtJab,
-			'mulaiJabatan' => $mulJab
+			'mulaiJabatan' => $mulJab,
+			'namaPendidikan' => $namaPendidikan,
+			'tahunPendidikan' => $tahunPendidikan,
+			'ijasah' => $ijasah,
+			'nipSuami' => $nipSuami,
+			'namaSuami' => $namaSuami,
+			'nipIstri' => $nipIstri,
+			'namaIstri' => $namaIstri,
+			'jmlAnak' => $jmlAnak
 			);
 		$where = array(
 			'nip' => $nip
 		);
 		$this->m_data->update_data($where,$data,'pegawai');
 		redirect('datapegawai_P/detail/'. $nip .'');
-		// redirect('detailpegawai_P');
 	}
 
 	function detail($nip){

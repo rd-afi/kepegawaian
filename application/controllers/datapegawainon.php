@@ -113,7 +113,7 @@ class datapegawainon extends CI_Controller {
 	function detail_gaji($kdPegawai){
 		$where = array('kdPegawai' => $kdPegawai);
 		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
-		$this->load->view('detailgaji_nonP',$data);
+		$this->load->view('detailgajinonP',$data);
 	}
 
 	function print_gaji($kdPegawai){

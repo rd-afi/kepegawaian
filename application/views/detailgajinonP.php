@@ -3,8 +3,8 @@ $this->load->view('template/head');
 ?>
 <!--tambahkan custom css disini-->
 <?php
-$this->load->view('template/topbarNonPeg');
-$this->load->view('template/sidebarNonPeg');
+$this->load->view('template/topbar');
+$this->load->view('template/sidebar');
 ?>
 <section class="content-header">
     <h1>

@@ -28,4 +28,42 @@ class dashNonPegawai extends CI_Controller {
 		$this->load->view('dashNonPegawai',$data);
 	}
 
+	function detail($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->detail_data($where,'pegawainon')->result();
+		$this->load->view('detailpegawai_nonP',$data);
+	}
+
+	function detail_gaji($kdPegawai){
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
+		$this->load->view('detailgaji_nonP',$data);
+	}
+
+	function edit($kdPegawai){
+		$data['jabatan'] = $this->db->query("SELECT * FROM jabatannon");
+		$where = array('kdPegawai' => $kdPegawai);
+		$data['pegawainon'] = $this->m_pegawainon->edit_data($where,'pegawainon')->result();
+		$this->load->view('editpegawainon_P',$data);
+	}
+
+	function ubah(){
+		$kdPegawai = $this->input->post('kdPegawai');
+		$nama = $this->input->post('nama');
+		$jk = $this->input->post('rbJk');
+		$jabatan = $this->input->post('cbJabatan');
+
+		$data = array(
+			'kdPegawai' => $kdPegawai,
+			'nama' => $nama,
+			'jkNon' => $jk,
+			'kdJabatanNon' => $jabatan
+			);
+		$where = array(
+			'kdPegawai' => $kdPegawai
+		);
+		$this->m_pegawainon->update_data($where,$data,'pegawainon');
+		redirect('dashNonPegawai/detail/'. $kdPegawai .'');
+	}
+
 }

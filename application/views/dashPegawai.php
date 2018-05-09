@@ -23,52 +23,53 @@ $this->load->view('template/sidebarPeg');
   <?php foreach($pegawai as $u){ ?>
     <h1>SELAMAT DATANG,
     <!-- <?php echo $this->session->userdata("username"); ?></h1> -->
-    <?php echo $u->namaPegawai;  } ?></h1>      
+    <?php echo $u->namaPegawai;  } ?></h1>
 
     <ol class="breadcrumb">
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     </ol>
 </section>
 
+
 <!-- Main content -->
 <section class="content">
-    <!-- Info boxes -->
-    <div class="row">
+<div class="container">
+  <div class="col-md-12">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" style="width:80%; height: 400px !important;  margin: 0 auto;">
+      <div class="item active">
+        <img class="img-responsive center-block" src="assets/image/1.jpeg" alt="">
+      </div>
 
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <span class="info-box-icon bg-yellow">
-                <i class="ion ion-ios-people"></i>
-              </span>
-              <div class="info-box-content">
-                <span class="info-box-text">Total Pegawai Terdaftar</span>
-                <h3><?php echo $jumPegawai; ?></h3>
-              </div><!-- /.info-box-content -->
-            </div>
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+      <div class="item">
+        <img class="img-responsive center-block" src="assets/image/2.jpg" alt="">
+      </div>
 
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <span class="info-box-icon bg-aqua">
-                <i class="ion ion-ios-people"></i>
-              </span>
-              <div class="info-box-content">
-                <span class="info-box-text">Total Akun Terdaftar</span>
-                <h3><?php echo $jumAkun; ?></h3>
-              </div><!-- /.info-box-content -->
-            </div>
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+      <div class="item">
+        <img src="assets/image/3.jpg" alt="" style="width:100%;">
+      </div>
+    </div>
 
-
-    </div><!-- /.row -->
-
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
 
 </section><!-- /.content -->
 

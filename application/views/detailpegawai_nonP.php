@@ -30,15 +30,15 @@ $this->load->view('template/sidebarNonPeg');
               <div class="input-group-btn pull-right">
                 <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                   <ul class="dropdown-menu">
-                    <li>
+                    <!-- <li>
                       <a href="<?php echo base_url(). 'dashNonPegawai/edit/' . $u->kdPegawai; ?>"><i class="glyphicon glyphicon-pencil"></i> Ubah Data</a>
-                    </li>
+                    </li> -->
                     <!-- <li class="divider"></li>
                     <li>
                       <a href="<?php echo base_url(). 'datapegawainon/hapus/' . $u->kdPegawai; ?>"
                         onclick="javascript: return confirm('Anda yakin hapus ?')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                     </li> -->
-                    <li class="divider"></li>
+                    <!-- <li class="divider"></li> -->
                     <li>
                       <a href="<?php echo base_url(). 'datapegawai/report/' . $u->kdPegawai; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>
                     </li>

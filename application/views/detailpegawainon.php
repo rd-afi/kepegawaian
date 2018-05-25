@@ -60,6 +60,31 @@ $this->load->view('template/sidebar');
                   <td>Jabatan</td>
                   <td><?php echo $u->namaJabatanNon ?></td>
                 </tr>
+                </tr>
+                <tr>
+                  <td>Alamat</td>
+                  <td><?php echo $u->alamat ?></td>
+                </tr>
+                </tr>
+                <tr>
+                  <td>Jenjang Pendidikan</td>
+                  <td><?php echo $u->jenjang_pendidikan ?></td>
+                </tr>
+                </tr>
+                <tr>
+                  <td>Status Perkawinan</td>
+                  <td><?php echo $u->status_perkawinan ?></td>
+                </tr>
+                </tr>
+                <tr>
+                  <td>Suami</td>
+                  <td><?php echo $u->suami ?></td>
+                </tr>
+                </tr>
+                <tr>
+                  <td>Istri</td>
+                  <td><?php echo $u->istri ?></td>
+                </tr>
               </table>
 
           </div>

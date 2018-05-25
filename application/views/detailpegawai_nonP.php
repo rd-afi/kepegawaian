@@ -60,6 +60,26 @@ $this->load->view('template/sidebarNonPeg');
                   <td>Jabatan</td>
                   <td><?php echo $u->namaJabatanNon ?></td>
                 </tr>
+                <tr>
+                  <td>Alamat</td>
+                  <td><?php echo $u->alamat ?></td>
+                </tr>
+                <tr>
+                  <td>Jenjang Pendidikan</td>
+                  <td><?php echo $u->jenjang_pendidikan ?></td>
+                </tr>
+                <tr>
+                  <td>Status Perkawinan</td>
+                  <td><?php echo $u->status_perkawinan ?></td>
+                </tr>
+                <tr>
+                  <td>Suami</td>
+                  <td><?php echo $u->suami ?></td>
+                </tr>
+                <tr>
+                  <td>Istri</td>
+                  <td><?php echo $u->istri ?></td>
+                </tr>
               </table>
 
           </div>

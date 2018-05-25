@@ -112,6 +112,54 @@ $this->load->view('template/sidebar');
                   <!-- <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan"> -->
               </div>
             </div>
+            <div class="row">
+              <div class="form-group col-xs-5">
+                <label>Alamat</label>
+                <input type="text" name="alamat" id="alamat" class="form-control" placeholder="ALamat">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-xs-5">
+                  <label>Jenjang Pendidikan</label>
+                  <select class="form-control" name="jenjang" id="jenjang">
+                    <option>Pilih Jenjang</option>
+                      <option name="jen" id="jen" value="Tidak Sekolah">Tidak Sekolah</option>
+                      <option name="jen" id="jen" value="SD">SD</option>
+                      <option name="jen" id="jen" value="SMP">SMP</option>
+                      <option name="jen" id="jen" value="SMA">SMA</option>
+                      <option name="jen" id="jen" value="D1">D1</option>
+                      <option name="jen" id="jen" value="D2">D2</option>
+                      <option name="jen" id="jen" value="D3">D3</option>
+                      <option name="jen" id="jen" value="D4">D4</option>
+                      <option name="jen" id="jen" value="S1">S1</option>
+                      <option name="jen" id="jen" value="S2">S2</option>
+                      <option name="jen" id="jen" value="S3">S3</option>
+                  </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-xs-5">
+                  <label>Status Perkawinan</label>
+                  <select class="form-control" name="perkawinan" id="perkawinan">
+                    <option>Pilih Status</option>
+                      <option name="statper" id="statper" value="Lajang">Lajang</option>
+                      <option name="statper" id="statper" value="Sudah">Sudah</option>
+                      <option name="statper" id="statper" value="Belum">Belum</option>
+                  </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-xs-5">
+                <label>Nama Suami</label>
+                <input type="text" name="suami" id="suami" class="form-control" placeholder="Nama Suami">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-xs-5">
+                <label>Nama Istri</label>
+                <input type="text" name="istri" id="istri" class="form-control" placeholder="Nama Istri">
+              </div>
+            </div>
             <br>
             <!-- BOX FOOTER -->
             <div class="box-footer clearfix">

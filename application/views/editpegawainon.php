@@ -67,7 +67,72 @@ $this->load->view('template/sidebar');
                         </div>
                       </div>
                     </div>
-                  <hr>
+                    <div class="row">
+                      <div class="form-group col-xs-5">
+                          <label>Alamat</label>
+                          <input type="text" name="alamat" id="alamat" class="form-control" value="<?php echo $u->alamat?>">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <label>Jenjang Pendidikan</label>
+                        <div class="form-group">
+                          <select class="form-control" name="jenjang" id="jenjang">
+                            <option>Pilih Jenjang</option>
+                            <option name="jen" id="jen" value="Tidak Sekolah" <?php if('Tidak Sekolah'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'Tidak Sekolah';?></option>
+                            <option name="jen" id="jen" value="SD" <?php if('SD'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'SD';?></option>
+                            <option name="jen" id="jen" value="SMP" <?php if('SMP'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'SMP';?></option>
+                            <option name="jen" id="jen" value="SMA" <?php if('SMA'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'SMA';?></option>
+                            <option name="jen" id="jen" value="D1" <?php if('D1'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'D1';?></option>
+                            <option name="jen" id="jen" value="D2" <?php if('D2'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'D2';?></option>
+                            <option name="jen" id="jen" value="D3" <?php if('D3'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'D3';?></option>
+                            <option name="jen" id="jen" value="D4" <?php if('D4'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'D4';?></option>
+                            <option name="jen" id="jen" value="S1" <?php if('S1'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'S1';?></option>
+                            <option name="jen" id="jen" value="S2" <?php if('S2'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'S2';?></option>
+                            <option name="jen" id="jen" value="S3" <?php if('S3'==$u->jenjang_pendidikan){?> selected <?php } ?> >
+                            <?php echo 'S3';?></option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <label>Status Perkawinan</label>
+                        <div class="form-group">
+                          <select class="form-control" name="perkawinan" id="perkawinan">
+                            <option>Pilih Status</option>
+                            <option name="statper" id="statper" value="Lajang" <?php if('Lajang'==$u->status_perkawinan){?> selected <?php } ?> >
+                            <?php echo 'Lajang';?></option>
+                            <option name="statper" id="statper" value="Sudah" <?php if('Sudah'==$u->status_perkawinan){?> selected <?php } ?> >
+                            <?php echo 'Sudah';?></option>
+                            <option name="statper" id="statper" value="Belum" <?php if('Belum'==$u->status_perkawinan){?> selected <?php } ?> >
+                            <?php echo 'Belum';?></option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-5">
+                          <label>Suami</label>
+                          <input type="text" name="suami" id="suami" class="form-control" value="<?php echo $u->suami?>">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-5">
+                          <label>Istri</label>
+                          <input type="text" name="istri" id="istri" class="form-control" value="<?php echo $u->istri?>">
+                      </div>
+                    </div>
 
                 </div> <!-- BOX BODY -->
                 <?php } ?>

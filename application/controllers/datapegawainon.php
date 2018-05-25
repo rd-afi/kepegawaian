@@ -60,12 +60,22 @@ class datapegawainon extends CI_Controller {
 		$nama = $this->input->post('nama');
 		$jk = $this->input->post('rbJk');
 		$jabatan = $this->input->post('jabatan');
+		$alamat = $this->input->post('alamat');
+		$jenjang = $this->input->post('jenjang');
+		$perkawinan = $this->input->post('perkawinan');
+		$suami = $this->input->post('suami');
+		$istri = $this->input->post('istri');
 
 		$data = array(
 			'kdPegawai' => $kdPegawai,
 			'nama' => $nama,
 			'jkNon' => $jk,
-			'kdJabatanNon' => $jabatan
+			'kdJabatanNon' => $jabatan,
+			'alamat' => $alamat,
+			'jenjang_pendidikan' => $jenjang,
+			'status_perkawinan' => $perkawinan,
+			'istri' => $istri,
+			'suami' => $suami
 			);
 		$this->m_pegawainon->input_data($data,'pegawainon');
 		redirect('datapegawainon');
@@ -74,8 +84,8 @@ class datapegawainon extends CI_Controller {
 
 	function hapus($kdPegawai){
 		$where = array('kdPegawai' => $kdPegawai);
-		$this->m_pegawainon->hapus_data($where,'pegawai');
-		redirect('datapegawai');
+		$this->m_pegawainon->hapus_data($where,'pegawainon');
+		redirect('datapegawainon');
 	}
 
 	function edit($kdPegawai){
@@ -90,12 +100,22 @@ class datapegawainon extends CI_Controller {
 		$nama = $this->input->post('nama');
 		$jk = $this->input->post('rbJk');
 		$jabatan = $this->input->post('cbJabatan');
+		$alamat = $this->input->post('alamat');
+		$jenjang = $this->input->post('jenjang');
+		$perkawinan = $this->input->post('perkawinan');
+		$suami = $this->input->post('suami');
+		$istri = $this->input->post('istri');
 
 		$data = array(
 			'kdPegawai' => $kdPegawai,
 			'nama' => $nama,
 			'jkNon' => $jk,
-			'kdJabatanNon' => $jabatan
+			'kdJabatanNon' => $jabatan,
+			'alamat' => $alamat,
+			'jenjang_pendidikan' => $jenjang,
+			'status_perkawinan' => $perkawinan,
+			'istri' => $istri,
+			'suami' => $suami
 			);
 		$where = array(
 			'kdPegawai' => $kdPegawai

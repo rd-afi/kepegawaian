@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2018 at 09:51 PM
+-- Generation Time: May 25, 2018 at 11:27 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -138,7 +138,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`, `namaPendidikan`, `tahunPendidikan`, `Ijasah`, `nipSuami`, `namaSuami`, `nipIstri`, `namaIstri`, `jmlAnak`, `fotoIjazah`, `fotoSK`, `fotoKTP`, `fotoKK`) VALUES
-(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', 'Kota Majalengka', 'Perempuan', 21123321, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01', 'Universitas Indonesia', 2002, 'S3 Administrasi Pendidikan', 2147483647, 'Udahpunya', 0, '', 0, '', '', '', ''),
+(196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', 'Kota Majalengka', 'Perempuan', 123123123, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01', 'Universitas Indonesia', 2002, 'S3 Administrasi Pendidikan', 2147483647, 'Udahpunya', 0, '', 0, '', '', '', ''),
 (196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Kota Garut', 'Perempuan', 98888811, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01', '', 0, '', 0, '', 0, '', 0, '', '', '', '');
 
 -- --------------------------------------------------------
@@ -151,20 +151,25 @@ CREATE TABLE `pegawainon` (
   `kdPegawai` varchar(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jkNon` varchar(10) NOT NULL,
-  `kdJabatanNon` int(11) NOT NULL
+  `kdJabatanNon` int(11) NOT NULL,
+  `alamat` varchar(256) NOT NULL,
+  `jenjang_pendidikan` varchar(256) NOT NULL,
+  `status_perkawinan` varchar(256) NOT NULL,
+  `istri` varchar(256) NOT NULL,
+  `suami` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pegawainon`
 --
 
-INSERT INTO `pegawainon` (`kdPegawai`, `nama`, `jkNon`, `kdJabatanNon`) VALUES
-('P001', 'Riyanto', 'Laki-Laki', 2),
-('P002', 'Deni Kustiana', 'Laki-Laki', 2),
-('P003', 'Ujang Kartomi', 'Laki-Laki', 1),
-('P004', 'Budi', 'Laki-Laki', 1),
-('P005', 'Adi', 'Laki-Laki', 1),
-('P006', 'Ria', 'Perempuan', 1);
+INSERT INTO `pegawainon` (`kdPegawai`, `nama`, `jkNon`, `kdJabatanNon`, `alamat`, `jenjang_pendidikan`, `status_perkawinan`, `istri`, `suami`) VALUES
+('P001', 'Riyanto', 'Laki-Laki', 2, 'Adalah', 'SMA', 'Lajang', '', ''),
+('P002', 'Deni Kustiana', 'Laki-Laki', 2, '', '', '', '', ''),
+('P003', 'Ujang Kartomi', 'Laki-Laki', 1, '', '', '', '', ''),
+('P004', 'Budi', 'Laki-Laki', 1, '', '', '', '', ''),
+('P005', 'Adi', 'Laki-Laki', 1, '', '', '', '', ''),
+('P006', 'Ria', 'Perempuan', 1, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -238,7 +243,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
 ('196103061991032002', '196103061991032002', '1', 1),
 ('admin', 'admin', '0', 1),
-('P001', '001123', '2', 1),
+('P001', '123', '2', 1),
 ('P002', 'P002', '2', 1);
 
 --

@@ -62,12 +62,54 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user">
+                    </i> <span>Absensi</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <!-- <li><a href="<?php echo site_url('akun/absensi') ?>"><i class="fa fa-circle-o"></i> PNS</a></li> -->
+                    <li><a href="<?php echo site_url('akun/absensi_non') ?>"><i class="fa fa-circle-o"></i> Non-PNS</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user">
                     </i> <span>Gaji</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo site_url('datapegawai/datagajipegawai') ?>"><i class="fa fa-circle-o"></i> PNS</a></li>
                     <li><a href="<?php echo site_url('datapegawainon/datagajipegawainon') ?>"><i class="fa fa-circle-o"></i> Non-PNS</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text">
+                    </i> <span>Laporan Gaji</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <!-- <li class="treeview">
+                    <a href="#"><i class="fa fa-gear"></i> PNS
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?php echo site_url('akun/laporanBulanan') ?>"><i class="fa fa-circle-o"></i> Bulanan</a></li>
+                      <li><a href="<?php echo site_url('akun/laporanTahunan') ?>"><i class="fa fa-circle-o"></i> Tahunan</a></li>
+                    </ul>
+                  </li> -->
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-gear"></i> NON-PNS
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?php echo site_url('akun/laporanBulananNon') ?>"><i class="fa fa-circle-o"></i> Bulanan</a></li>
+                      <li><a href="<?php echo site_url('akun/laporanTahunanNon') ?>"><i class="fa fa-circle-o"></i> Tahunan</a></li>
+                    </ul>
+                  </li>
                 </ul>
             </li>
             <li class="treeview">

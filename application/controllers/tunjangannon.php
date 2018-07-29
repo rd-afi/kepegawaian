@@ -9,7 +9,7 @@ class tunjangannon extends CI_Controller {
 		$this->load->model('m_tunjangannon','tunjangannon');
 
 		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth"));
+			redirect(base_url("login"));
 		}
 	}
 

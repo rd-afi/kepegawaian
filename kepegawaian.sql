@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 11:27 PM
+-- Generation Time: Jul 22, 2018 at 12:41 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `kepegawaian`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `no` int(11) NOT NULL,
+  `nip` bigint(18) NOT NULL,
+  `kdPegawai` varchar(11) NOT NULL,
+  `bulan_tahun` varchar(25) NOT NULL,
+  `absen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`no`, `nip`, `kdPegawai`, `bulan_tahun`, `absen`) VALUES
+(1, 196103061991032002, '', 'July - 2018', 20),
+(2, 196905151992032009, '', 'July - 2018', 23),
+(3, 0, 'P005', 'July - 2018', 20),
+(4, 0, 'P002', 'June - 2018', 22),
+(5, 0, 'P001', 'June - 2018', 20),
+(6, 0, 'P003', 'June - 2018', 21),
+(7, 0, 'P004', 'June - 2018', 15),
+(8, 0, 'P002', 'July - 2018', 22),
+(9, 0, 'P003', 'July - 2018', 15),
+(10, 0, 'P001', 'January - 2018', 20);
 
 -- --------------------------------------------------------
 
@@ -138,6 +168,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`, `namaPendidikan`, `tahunPendidikan`, `Ijasah`, `nipSuami`, `namaSuami`, `nipIstri`, `namaIstri`, `jmlAnak`, `fotoIjazah`, `fotoSK`, `fotoKTP`, `fotoKK`) VALUES
+(123123, 'asdasda', 'asdasd', '2018-07-03', 'Islam', 'asdsad', 'Laki-Laki', 123123, 14, '2018-07-10', 2, '2018-07-10', '2018-07-18', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
+(196103061991032001, 'cvbcvbc', 'cvbcvbvc', '2018-06-26', 'Islam', 'cvbcvb', 'Laki-Laki', 24234234, 21, '2018-07-11', 13, '2018-07-10', '2018-07-18', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
 (196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', 'Kota Majalengka', 'Perempuan', 123123123, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01', 'Universitas Indonesia', 2002, 'S3 Administrasi Pendidikan', 2147483647, 'Udahpunya', 0, '', 0, '', '', '', ''),
 (196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Kota Garut', 'Perempuan', 98888811, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01', '', 0, '', 0, '', 0, '', 0, '', '', '', '');
 
@@ -201,7 +233,7 @@ CREATE TABLE `tunjangan` (
 
 INSERT INTO `tunjangan` (`id`, `kdPangkat`, `gajiPokok`, `tjIstri`, `tjAnak`, `tjUpns`, `tjStruk`, `tjFungsi`, `tjDaerah`, `tjPencil`, `tjLain`, `tjKompen`, `tjBeras`, `tjPph`, `pembul`) VALUES
 (1, 43, 4430400, 443040, 177216, 190000, 5, 2, 1, 1, 1, 1, 1, 25695, 1),
-(2, 42, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+(2, 42, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 22, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -249,6 +281,13 @@ INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `no` (`no`);
 
 --
 -- Indexes for table `jabatan`
@@ -307,6 +346,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --

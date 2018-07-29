@@ -9,7 +9,7 @@ class datapegawai_P extends CI_Controller {
 		$this->load->model('m_data');
 
 		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth"));
+			redirect(base_url("login"));
 		}
 	}
 

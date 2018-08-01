@@ -26,7 +26,34 @@
 			return "December";
 		}
 	}
-	// function get_monthname($number){
+	function get_monthnumber($bulan){
+	  if($bulan ==  "January"){
+	    return "01";
+	  }else if($bulan == "February"){
+	    return "02";
+	  }else if($bulan ==  "March"){
+	    return "03";
+	  }else if($bulan == "April"){
+	    return "04";
+	  }else if($bulan == "May"){
+	    return "05";
+	  }else if($bulan == "June"){
+	    return "06";
+	  }else if($bulan == "July"){
+	    return "07";
+	  }else if($bulan == "August"){
+	    return "08";
+	  }else if($bulan == "September"){
+	    return "09";
+	  }else if($bulan == "October"){
+	    return "10";
+	  }else if($bulan == "November"){
+	    return "11";
+	  }else if($bulan == "December"){
+	    return "12";
+	  }
+	}
+	// function get_monthnumber($number){
 	// 	if($number == 1 or $number ==  "01"){
 	// 		return "Januari";
 	// 	}else if($number == 2 or $number == "02"){

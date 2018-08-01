@@ -28,7 +28,8 @@ $this->load->view('template/sidebar');
     <div class="tab-content">
       <div class="tab-pane active" id="tab_1">
         <div class="box-body">
-          <table class="table table-striped table-bordered" id="myTable">
+          <table class="table table-striped table-bordered">
+          <!-- <table class="table table-striped table-bordered" id="myTable"> -->
             <thead>
               <tr>
                 <th>No</th>
@@ -47,8 +48,8 @@ $this->load->view('template/sidebar');
                 <td><?php echo $u->nip ?></td>
                 <td><?php echo $u->namaPegawai ?></td>
                 <td><?php echo $u->namaPangkat ?></td>
-                <!-- <td><?php echo date('d-m-Y', strtotime($u->tmtPangkat));?></td> -->
                 <td><?php echo $u->namaJabatan ?></td>
+                <!-- <td><?php echo date('d-m-Y', strtotime($u->tmtPangkat));?></td> -->
                 <!-- <td><?php echo date('d-m-Y', strtotime($u->tmtJabatan));?></td> -->
                 <!-- <td><?php echo date('d-m-Y', strtotime($u->mulaiJabatan));?></td> -->
                 <td><a class="btn btn-sm btn-primary" title="Detail" href="datapegawai/detail/<?php echo $u->nip ?>">Detail</a></td>

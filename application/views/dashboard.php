@@ -28,10 +28,44 @@ $this->load->view('template/sidebar');
 
 <!-- Main content -->
 <section class="content">
-    <!-- Info boxes -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" style="width:80%; height: 400px !important;  margin: 0 auto;">
+      <div class="item active">
+        <img class="img-responsive center-block" src="assets/image/1.jpeg" alt="">
+      </div>
+
+      <div class="item">
+        <img class="img-responsive center-block" src="assets/image/2.jpg" alt="">
+      </div>
+
+      <div class="item">
+        <img src="assets/image/3.jpg" alt="" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
+
+<!-- <section class="content">
     <div class="row">
 
-        <!-- fix for small devices only -->
         <div class="clearfix visible-sm-block"></div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -43,10 +77,10 @@ $this->load->view('template/sidebar');
               <div class="info-box-content">
                 <span class="info-box-text">Total Pegawai Terdaftar</span>
                 <h3><?php echo $jumPegawai; ?></h3>
-              </div><!-- /.info-box-content -->
+              </div>
             </div>
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+          </div>
+        </div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="small-box bg-aqua">
@@ -57,10 +91,10 @@ $this->load->view('template/sidebar');
               <div class="info-box-content">
                 <span class="info-box-text">Total Akun Terdaftar</span>
                 <h3><?php echo $jumAkun; ?></h3>
-              </div><!-- /.info-box-content -->
+              </div>
             </div>
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+          </div>
+        </div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="small-box bg-yellow">
@@ -71,21 +105,19 @@ $this->load->view('template/sidebar');
               <div class="info-box-content">
                 <span class="info-box-text">Total Non-Pegawai Terdaftar</span>
                 <h3><?php echo $jumPegawaiNon; ?></h3>
-              </div><!-- /.info-box-content -->
+              </div>
             </div>
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+          </div>
+        </div>
 
-    </div><!-- /.row -->
+    </div>
 
-    <!-- TABEL -->
     <div class="row">
         <div class="col-md-6">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Total PNS berdasarkan Jenis Kelamin</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
@@ -138,19 +170,10 @@ $this->load->view('template/sidebar');
                 </tfoot>
               </table>
             </div>
-            <!-- /.box-body -->
-
           </div>
-          <!-- /.box -->
-
-
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-
-
-</section><!-- /.content -->
+</section> -->
 
 
 

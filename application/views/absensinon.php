@@ -78,10 +78,18 @@ $this->load->view('template/sidebar');
               <h3 class="box-title">Data Absensi</h3>
             </div>
             <div class="box-body">
-              <button class="btn btn-success" onclick="add_absensi()"><i class="glyphicon glyphicon-plus"></i> Data Absensi</button>
+              <?php
+              if ((get_monthnumber($bulan) > date('m')) && $tahun == date ('Y')) {
+                $onoff = "disabled";
+              } else if ((get_monthnumber($bulan) <= date('m')) || $tahun <= date('Y')){
+                $onoff = " ";
+              }?>
+              <button class="btn btn-success" onclick="add_absensi()" <?php echo $onoff; ?>><i class="glyphicon glyphicon-plus"></i> Data Absensi</button>
               <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
             </div>
             <!-- /.box-header -->
+            <h4 align = 'center'>Laporan Gaji</h4>
+         		<center><h4> Periode  <?php echo $bulan.' '.$tahun ?></h4></center>
             <div class="box-body">
               <table id="table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                 <thead>
@@ -141,7 +149,6 @@ function viewkan() {
 }
 
 $(document).ready(function() {
-
     //datatables
     table = $('#table').DataTable({
 

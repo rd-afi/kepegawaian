@@ -13,9 +13,17 @@ class M_data extends CI_Model{
 		$this->db->select('*')
 		->join('pangkat','pangkat.kdPangkat=pegawai.kdPangkat')
 		->join('jabatan','jabatan.kdJabatan=pegawai.kdJabatan')
-		->join('tunjangan','tunjangan.id=jabatan.kdJabatan');
+		->join('tunjangan','tunjangan.kdPangkat=pangkat.kdPangkat');
 		return $this->db->get('pegawai');
 	}
+	//
+	// function ambil_data(){
+	// 	$this->db->select('*')
+	// 	->join('pangkat','pangkat.kdPangkat=pegawai.kdPangkat')
+	// 	->join('jabatan','jabatan.kdJabatan=pegawai.kdJabatan')
+	// 	->join('tunjangan','tunjangan.id=jabatan.kdJabatan');
+	// 	return $this->db->get('pegawai');
+	// }
 
 	function input_data($data,$table){
 		$this->db->insert($table,$data);

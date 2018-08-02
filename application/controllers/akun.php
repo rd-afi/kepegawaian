@@ -309,65 +309,64 @@ class akun extends CI_Controller {
 				$data['pangkat'] = $this->db->query("SELECT * FROM pangkat");
 				$data['jabatan'] = $this->db->query("SELECT * FROM jabatan");
 				$data['tunjangan'] = $this->db->query("SELECT * FROM tunjangan");
+				// if (isset($_SESSION['bulan'])) {
+				// 	$bulan = $_SESSION['bulan'];
+				// 	$tahun = $_SESSION['tahun'];
+				// 	$data['bulan'] = $bulan;
+				// 	$data['tahun'] = $tahun;
+				// 	$data['absensi'] = $this->m_data->get_absensi_non($bulan,$tahun);
+				// 	$data['absensinon'] = $this->m_data->get_list_absensi_non($bulan,$tahun);
+				// 	$this->session->set_userdata('bulan', $bulan);
+				// 	$this->session->set_userdata('tahun', $tahun);
+				// } else
 				if(isset($_POST['bulan']) && isset($_POST['tahun'])){
-						$data['bulan'] = $this->input->post('bulan');
-						$data['tahun'] = $this->input->post('tahun');
-						$bulan = $this->input->post('bulan');
-						$tahun = $this->input->post('tahun');
-						$data['absensi'] = $this->m_data->get_absensi_non($bulan,$tahun);
-					}else{
-						$data['bulan'] = date('F');
-						$data['tahun'] = date('Y');
-						$data['absensi'] = $this->m_data->get_absensi_non(date('F'),date('Y'));
-					}
+					$data['bulan'] = $this->input->post('bulan');
+					$data['tahun'] = $this->input->post('tahun');
+					$bulan = $this->input->post('bulan');
+					$tahun = $this->input->post('tahun');
+					$data['absensi'] = $this->m_data->get_absensi_non($bulan,$tahun);
+					$data['absensinon'] = $this->m_data->get_list_absensi_non($bulan,$tahun);
+					$this->session->set_userdata('bulan', $bulan);
+					$this->session->set_userdata('tahun', $tahun);
+				}else{
+					$data['bulan'] = date('F');
+					$data['tahun'] = date('Y');
+					$data['absensi'] = $this->m_data->get_absensi_non(date('F'),date('Y'));
+					$data['absensinon'] = $this->m_data->get_list_absensi_non(date('F'),date('Y'));
+					$this->session->set_userdata('bulan', date('F'));
+					$this->session->set_userdata('tahun', date('Y'));
+				}
 				$this->load->view('absensinon',$data);
 			}
 
-			public function ajax_list_absensi_non()
-			{
-				// $list = $this->absensinon->get_datatables();
-				if(isset($_POST['bulan']) && isset($_POST['tahun'])){
-						$data['bulan'] = $this->input->post('bulan');
-						$data['tahun'] = $this->input->post('tahun');
-						$bulan = $this->input->post('bulan');
-						$tahun = $this->input->post('tahun');
-						$list = $this->db->query("SELECT * FROM pegawainon JOIN absensi ON absensi.kdPegawai = pegawainon.kdPegawai
-							JOIN jabatannon ON jabatannon.kdJabatanNon = pegawainon.kdJabatanNon
-							WHERE bulan_tahun = '".$bulan." - ".$tahun."'")->result();
-					}else{
-						$data['bulan'] = date('F');
-						$data['tahun'] = date('Y');
-						$list = $this->db->query("SELECT * FROM pegawainon JOIN absensi ON absensi.kdPegawai = pegawainon.kdPegawai
-							JOIN jabatannon ON jabatannon.kdJabatanNon = pegawainon.kdJabatanNon
-							WHERE bulan_tahun = '".date('F')." - ".date('Y')."'")->result();
-					}
-				$data = array();
-				$no = $_POST['start'];
-				foreach ($list as $absensi) {
-					$no++;
-					$row = array();
-					$row[] = $no;
-					$row[] = $absensi->kdPegawai;
-					$row[] = $absensi->nama;
-					$row[] = $absensi->namaJabatanNon;
-					$row[] = $absensi->absen;
+			function list_absensinon(){
+				$bulan = $_SESSION['bulan'];
+				$tahun = $_SESSION['tahun'];
+        $data = $this->m_data->get_list_absensi_non($bulan,$tahun);
+        echo json_encode($data);
+    	}
+			function simpan_barang(){
+        $kdPegawai = $this->input->post('cbAbsensi');
+        $bulan_tahun = $this->input->post('bulanku');
+        $absen = $this->input->post('kehadiran');
+        $data = $this->m_data->simpan_barang($kdPegawai,$bulan_tahun,$absen);
+        echo json_encode($data);
+	    }
 
-					//add html for action
-					$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_absensi('."'".$absensi->no."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-						  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_absensi('."'".$absensi->no."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+	    function update_barang(){
+        $kdPegawai = $this->input->post('cbAbsensi');
+        $bulan_tahun = $this->input->post('bulanku');
+        $absen = $this->input->post('kehadiran');
+        $data = $this->m_data->update_barang($kdPegawai,$bulan_tahun,$absen);
+	      echo json_encode($data);
+	    }
 
-					$data[] = $row;
-				}
+	    function hapus_barang(){
+	      $kobar=$this->input->post('kode');
+	      $data=$this->m_barang->hapus_barang($kobar);
+	      echo json_encode($data);
+	    }
 
-				$output = array(
-								"draw" => $_POST['draw'],
-								"recordsTotal" => $this->absensinon->count_all(),
-								"recordsFiltered" => $this->absensinon->count_filtered(),
-								"data" => $data,
-						);
-				//output to json format
-				echo json_encode($output);
-			}
 
 			public function ajax_edit_absensi_non($id)
 			{
@@ -401,8 +400,8 @@ class akun extends CI_Controller {
 				{
 					$data = array(
 			      // 'kdPangkat' => $this->input->post('kdPangkat'),
-						'kdPegawai' => $this->input->post('cbAbsensi'),
-						'bulan_tahun' => $this->input->post('bulan'),
+						'kdPegawai' => $this->input->post('kdPegawai'),
+						'bulan_tahun' => $this->input->post('bulanku'),
 						'absen' => $this->input->post('kehadiran')
 						);
 					$this->absensi->update(array('no' => $this->input->post('no')), $data);

@@ -19,7 +19,6 @@ $this->load->view('template/sidebar');
 
     <!-- Main content -->
     <section class="content">
-
       <div class="box box-info">
         <div class="box-header">
           <!-- <h3 class="box-title">Input Addon</h3> -->
@@ -36,7 +35,7 @@ $this->load->view('template/sidebar');
                         <?php
                             for($i=1;$i<=12;$i++){
                 							if($i == date('m')){
-                							echo '<option selected="" value="'.get_monthname($i).'">'.get_monthname($i).'</option>';
+                							echo '<option selected="'.get_monthname($i).'" value="'.get_monthname($i).'">'.get_monthname($i).'</option>';
                 							}else{
                 							echo '<option value="'.get_monthname($i).'">'.get_monthname($i).'</option>';
                 							}
@@ -51,7 +50,7 @@ $this->load->view('template/sidebar');
                         <?php
     						for($i=2017;$i<=date("Y");$i++){
     							if($i == date('Y')){
-    							echo '<option selected="" value="'.$i.'">'.$i.'</option>';
+    							echo '<option selected="'.$i.'" value="'.$i.'">'.$i.'</option>';
     							}else{
     							echo '<option value="'.$i.'">'.$i.'</option>';
     							}
@@ -91,6 +90,7 @@ $this->load->view('template/sidebar');
             <h4 align = 'center'>Laporan Gaji</h4>
          		<center><h4> Periode  <?php echo $bulan.' '.$tahun ?></h4></center>
             <div class="box-body">
+              <!-- <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%"> -->
               <table id="table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -102,7 +102,21 @@ $this->load->view('template/sidebar');
                         <th style="width:155px;">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
+                  <?php $no = 1; foreach ($absensinon as $d) { ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $d->kdPegawai ?></td>
+                  <td><?php echo $d->nama ?></td>
+                  <td><?php echo $d->namaJabatanNon ?></td>
+                  <td><?php echo $d->absen ?></td>
+                  <td><a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_absensi('<?php echo $d->no ?>')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+        						  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_absensi('<?php echo $d->no ?>')"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
+                </tr>
+                  <?php  } ?>
+                </tbody> -->
+                <tbody id="show_data">
+
                 </tbody>
 
                 <tfoot>
@@ -149,51 +163,39 @@ function viewkan() {
 }
 
 $(document).ready(function() {
-    //datatables
-    table = $('#table').DataTable({
+    tampil_absensi();
+    $('#table').dataTable();
 
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "scrollX": true,
-        "order": [], //Initial no order.
+        //fungsi tampil barang
+        function tampil_absensi(){
+            $.ajax({
+                type  : 'ajax',
+                url   : 'list_absensinon',
+                async : false,
+                dataType : 'json',
+                success : function(data){
+                    var html = '';
+                    var i;
+                    var no = 1;
+                    for(i=0; i<data.length; i++){
+                        html += '<tr>'+
+                                '<td>'+(no++)+'</td>'+
+                                '<td>'+data[i].kdPegawai+'</td>'+
+                                '<td>'+data[i].nama+'</td>'+
+                                '<td>'+data[i].namaJabatanNon+'</td>'+
+                                '<td>'+data[i].absen+'</td>'+
+                                '<td style="text-align:right;">'+
+                                    '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_absensi('+data[i].no+')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>'+' '+
+                                    '<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_absensi('+data[i].no+')"><i class="glyphicon glyphicon-trash"></i> Delete</a>'+
+                                '</td>'+
+                                '</tr>';
+                    }
+                    $('#show_data').html(html);
+                }
 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('akun/ajax_list_absensi_non')?>",
-            "type": "POST"
-        },
-
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        {
-            "targets": [ -1 ], //last column
-            "orderable": false, //set not orderable
-        },
-        ],
-
-    });
-
-    //datepicker
-    // $('.datepicker').datepicker({
-    //     autoclose: true,
-    //     format: "yyyy-mm-dd",
-    //     todayHighlight: true,
-    //     orientation: "top auto",
-    //     todayBtn: true,
-    //     todayHighlight: true,
-    // });
-    //
-    // $("#bulan").datepicker( {
-    //   format: "MM - yyyy",
-    //   startView: "months",
-    //   startDate: "January - 2017",
-    //   endDate: "today",
-    //   minViewMode: "months"
-    // });
-
+            });
+        }
 });
-
-
 
 function add_absensi()
 {
@@ -220,6 +222,7 @@ function edit_absensi(id)
         success: function(data)
         {
             $('[name="no"]').val(data.no);
+            $('[name="kdPegawai"]').val(data.kdPegawai);
             $('[name="cbAbsensi"]').val(data.nama);
             $('[name="bulanku"]').val(data.bulan_tahun);
             $('[name="kehadiran"]').val(data.absen);
@@ -235,8 +238,9 @@ function edit_absensi(id)
 
 function reload_table()
 {
-    // table.ajax.reload(null,false); //reload datatable ajax
-    document.location.href = 'absensi_non';
+  // window.location.href=window.location.href
+  window.location.reload();
+  // $('#table').DataTable().ajax.reload();
 }
 
 function save()
@@ -263,7 +267,9 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 $('#modal_form').modal('hide');
-                reload_table();
+                table.ajax.reload();
+                // reload_table();
+                // tampil_absensi();
             }
 
             $('#btnSave').text('save'); //change button text
@@ -307,6 +313,7 @@ function save_update()
             {
                 $('#modal_form_edit').modal('hide');
                 reload_table();
+                // tampil_absensi();
             }
 
             $('#btnSave').text('save'); //change button text

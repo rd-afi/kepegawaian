@@ -75,10 +75,12 @@ class M_data extends CI_Model{
 	}
 
 	public function get_list_absensi_non($bulan,$tahun){
-			$data = $this->db->query("SELECT pegawainon.kdPegawai, nama, absen
-				FROM pegawainon JOIN absensi ON absensi.kdPegawai = pegawainon.kdPegawai
+			$data = $this->db->query("SELECT pegawainon.kdPegawai as kdPegawai, no, nama, absen, namaJabatanNon
+				FROM pegawainon
+				JOIN absensi ON absensi.kdPegawai = pegawainon.kdPegawai
+				JOIN jabatannon ON jabatannon.kdJabatanNon = pegawainon.kdJabatanNon
 				WHERE bulan_tahun = '".$bulan." - ".$tahun."'");
-			return $data;
+			return $data->result();
 	}
 
 	public function get_gaji_tahunan_non($tahun){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2018 at 12:41 PM
+-- Generation Time: Aug 03, 2018 at 06:31 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -46,9 +46,11 @@ INSERT INTO `absensi` (`no`, `nip`, `kdPegawai`, `bulan_tahun`, `absen`) VALUES
 (5, 0, 'P001', 'June - 2018', 20),
 (6, 0, 'P003', 'June - 2018', 21),
 (7, 0, 'P004', 'June - 2018', 15),
-(8, 0, 'P002', 'July - 2018', 22),
-(9, 0, 'P003', 'July - 2018', 15),
-(10, 0, 'P001', 'January - 2018', 20);
+(10, 0, 'P001', 'January - 2018', 20),
+(12, 0, 'P004', 'July - 2018', 22),
+(14, 0, 'P002', 'July - 2018', 20),
+(15, 0, 'P003', 'July - 2018', 22),
+(16, 0, 'P006', 'July - 2018', 15);
 
 -- --------------------------------------------------------
 
@@ -168,7 +170,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`nip`, `namaPegawai`, `tempat`, `tglLahir`, `agama`, `alamat`, `jk`, `telepon`, `kdPangkat`, `tmtPangkat`, `kdJabatan`, `tmtJabatan`, `mulaiJabatan`, `namaPendidikan`, `tahunPendidikan`, `Ijasah`, `nipSuami`, `namaSuami`, `nipIstri`, `namaIstri`, `jmlAnak`, `fotoIjazah`, `fotoSK`, `fotoKTP`, `fotoKK`) VALUES
-(123123, 'asdasda', 'asdasd', '2018-07-03', 'Islam', 'asdsad', 'Laki-Laki', 123123, 14, '2018-07-10', 2, '2018-07-10', '2018-07-18', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
+(123, 'asd', 'asd', '2018-07-11', 'Islam', 'asd', 'Laki-Laki', 123, 12, '2018-07-01', 1, '2018-07-02', '2018-07-03', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
+(321, 'dsa', 'dsa', '2018-07-01', 'Islam', 'dsa', 'Perempuan', 909, 12, '2018-07-03', 6, '2018-07-03', '2018-07-03', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
 (196103061991032001, 'cvbcvbc', 'cvbcvbvc', '2018-06-26', 'Islam', 'cvbcvb', 'Laki-Laki', 24234234, 21, '2018-07-11', 13, '2018-07-10', '2018-07-18', '', 0, '', 0, '', 0, '', 0, '', '', '', ''),
 (196103061991032002, 'Dr. Hj. Uum Suminar', 'Majalengka', '1961-03-06', 'Islam', 'Kota Majalengka', 'Perempuan', 123123123, 42, '2011-10-01', 2, '2016-01-11', '1993-03-01', 'Universitas Indonesia', 2002, 'S3 Administrasi Pendidikan', 2147483647, 'Udahpunya', 0, '', 0, '', '', '', ''),
 (196905151992032009, 'Dr.Hj. Elis Rosdiawati, M.Pd.', 'Garut', '1969-05-15', 'Islam', 'Kota Garut', 'Perempuan', 98888811, 43, '2016-04-01', 1, '2017-05-15', '1992-03-01', '', 0, '', 0, '', 0, '', 0, '', '', '', '');
@@ -233,7 +236,19 @@ CREATE TABLE `tunjangan` (
 
 INSERT INTO `tunjangan` (`id`, `kdPangkat`, `gajiPokok`, `tjIstri`, `tjAnak`, `tjUpns`, `tjStruk`, `tjFungsi`, `tjDaerah`, `tjPencil`, `tjLain`, `tjKompen`, `tjBeras`, `tjPph`, `pembul`) VALUES
 (1, 43, 4430400, 443040, 177216, 190000, 5, 2, 1, 1, 1, 1, 1, 25695, 1),
-(2, 42, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 22, 2, 2);
+(2, 42, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 22, 2, 2),
+(3, 12, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23),
+(4, 13, 435, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 1),
+(5, 14, 1234, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(6, 21, 4321, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3),
+(7, 22, 7651, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8),
+(8, 23, 3242, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(9, 32, 98789, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(10, 41, 321, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3),
+(11, 24, 1231, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(12, 31, 3242, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(13, 33, 4324, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3),
+(14, 34, 42342, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -273,6 +288,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `role`, `status`) VALUES
+('123', '123', '1', 1),
 ('196103061991032002', '196103061991032002', '1', 1),
 ('admin', 'admin', '0', 1),
 ('P001', '123', '2', 1),
@@ -350,7 +366,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
@@ -370,7 +386,7 @@ ALTER TABLE `pangkat`
 -- AUTO_INCREMENT for table `tunjangan`
 --
 ALTER TABLE `tunjangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tunjangannon`
 --

@@ -131,7 +131,7 @@ class datapegawainon extends CI_Controller {
 	}
 
 	function detail_gaji($kdPegawai){
-		$where = array('kdPegawai' => $kdPegawai);
+		$where = array('pegawainon.kdPegawai' => $kdPegawai);
 		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
 		$this->load->view('detailgajinonP',$data);
 	}
@@ -152,6 +152,4 @@ class datapegawainon extends CI_Controller {
     $this->pdf->filename = "laporan.pdf";
     $this->pdf->load_view('printdetailgaji_nonP', $data);
 	}
-
-
 }

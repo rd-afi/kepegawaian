@@ -79,7 +79,9 @@ class m_pegawainon extends CI_Model{
 	function detail_gaji($where,$table){
 		$this->db->select('*')
 		->join('jabatannon','jabatannon.kdJabatanNon=pegawainon.kdJabatanNon')
-		->join('tunjangannon','tunjangannon.id=jabatannon.kdJabatanNon');
+		->join('tunjangannon','tunjangannon.id=jabatannon.kdJabatanNon')
+		->join('absensi','absensi.kdPegawai=pegawainon.kdPegawai')
+		->where('bulan_tahun',date('F',strtotime('-1 month')).' - '.date('Y'));
 		return $this->db->get_where($table,$where);
 	}
 

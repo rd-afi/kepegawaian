@@ -18,6 +18,22 @@ $this->load->view('template/sidebar');
     </ol>
 </section>
     <!-- Main content -->
+    <?php
+    if (!$pegawainon) {
+      echo '<script>
+            setTimeout(function() {
+                swal({
+                    title: "Data Tidak Ditemukan!",
+                    text: "Mohon Isi Absensi Terlebih dahulu",
+                    type: "warning"
+                }, function() {
+                    window.location = "../../akun/absensi_non";
+                });
+            });
+        </script>';
+      // echo "Kosooong";
+    }
+     ?>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -28,6 +44,7 @@ $this->load->view('template/sidebar');
              return $hasil_rupiah;
           }
           foreach($pegawainon as $u){ ?>
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Gaji & Tunjangan Pegawai</h3>
@@ -48,28 +65,45 @@ $this->load->view('template/sidebar');
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <h4 align = 'center'>Laporan Gaji</h4>
+              <center><h4> Bulan <?php echo date('F',strtotime('-1 month')).' '.date('Y') ?></h4></center>
 
               <h1><?php echo $u->nama ?></h1>
               <h3><?php echo $u->kdPegawai ?></h3>
               <table class="table table-bordered table-striped">
                 <tr>
-                  <td>Gaji Pokok</td>
-                  <td><?php $gajiPokok = $u->gajiPokok; echo rupiah($gajiPokok) ?></td>
+                  <th width="300">Jumlah Kehadiran</th>
+                  <td><?php $absen = $u->absen;
+                  if (!empty($bulan_tahun)) {
+                    echo '<script language="javascript">';
+                    echo 'alert("message successfully sent")';
+                    echo '</script>';
+                  } else {
+                    echo $absen;
+                  }
+                   ?></td>
                 </tr>
+                <!-- <tr>
+                  <td>Gaji Pokok</td>
+                  <td><?php
+                  $gajiPokok = $u->gajiPokok;
+                  echo rupiah($gajiHarian = $gajiPokok / 22);
+                   ?></td>
+                </tr> -->
               </table>
               <h3>Potongan</h3>
               <table class="table table-bordered table-striped">
                 <tr>
-                  <td>BPJS</td>
+                  <th width="300">BPJS</th>
                   <td> - <?php $bpjs = 64000; echo rupiah($bpjs) ?> </td>
                 </tr>
               </table>
                 <hr>
               <table class="table table-bordered table-striped">
                 <tr>
-                  <th>Total Gaji </th>
+                  <th width="300">Total Gaji </th>
                   <th><?php
-                  $totalGaji = ($gajiPokok-$bpjs);
+                  $totalGaji = (($gajiHarian*$absen)-$bpjs);
                   echo rupiah($totalGaji); ?></th>
                 </tr>
               </table>

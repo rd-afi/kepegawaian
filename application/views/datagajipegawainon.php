@@ -73,6 +73,8 @@ $this->load->view('template/foot');
 
 <script>
   $(document).ready(function(){
+    // swal("Mohon Isi Absensi terlebih dahulu", "","warning");
+
     $('#myTable').DataTable();
 
     $('#ttl').datepicker({

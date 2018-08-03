@@ -47,6 +47,8 @@ $this->load->view('template/sidebarNonPeg');
             </div>
             </div>
             <!-- /.box-header -->
+            <h4 align = 'center'>Laporan Gaji</h4>
+         		<center><h4> Bulan <?php echo date('F').' '.date('Y') ?></h4></center>
             <div class="box-body">
 
               <h1><?php echo $u->nama ?></h1>
@@ -54,7 +56,14 @@ $this->load->view('template/sidebarNonPeg');
               <table class="table table-bordered table-striped">
                 <tr>
                   <td>Gaji Pokok</td>
-                  <td><?php $gajiPokok = $u->gajiPokok; echo rupiah($gajiPokok) ?></td>
+                  <td><?php
+                  $gajiPokok = $u->gajiPokok;
+                  $absen = $u->absen;
+                  $gajiHarian = $gajiPokok / 22;
+                  $totalGaji = (($gajiHarian*$absen)-64000);
+                  echo rupiah($totalGaji);
+                  // $gajiPokok = $u->gajiPokok; $gajiPokok echo rupiah($gajiPokok)
+                   ?></td>
                 </tr>
               </table>
               <h3>Potongan</h3>

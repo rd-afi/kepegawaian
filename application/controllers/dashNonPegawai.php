@@ -35,7 +35,7 @@ class dashNonPegawai extends CI_Controller {
 	}
 
 	function detail_gaji($kdPegawai){
-		$where = array('kdPegawai' => $kdPegawai);
+		$where = array('pegawainon.kdPegawai' => $kdPegawai);
 		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
 		$this->load->view('detailgaji_nonP',$data);
 	}

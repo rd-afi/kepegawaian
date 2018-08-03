@@ -18,6 +18,22 @@ $this->load->view('template/sidebarNonPeg');
     </ol>
 </section>
     <!-- Main content -->
+    <?php
+    if (!$pegawainon) {
+      echo '<script>
+            setTimeout(function() {
+                swal({
+                    title: "Data Tidak Ditemukan!",
+                    text: "Absensi Belum Diisi",
+                    type: "warning"
+                }, function() {
+                    window.location = "../../dashNonPegawai";
+                });
+            });
+        </script>';
+      // echo "Kosooong";
+    }
+     ?>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -55,30 +71,38 @@ $this->load->view('template/sidebarNonPeg');
               <h3><?php echo $u->kdPegawai ?></h3>
               <table class="table table-bordered table-striped">
                 <tr>
+                  <th width="300">Jumlah Kehadiran</th>
+                  <td><?php $absen = $u->absen;
+                  if (!empty($bulan_tahun)) {
+                    echo '<script language="javascript">';
+                    echo 'alert("message successfully sent")';
+                    echo '</script>';
+                  } else {
+                    echo $absen;
+                  }
+                   ?></td>
+                </tr>
+                <!-- <tr>
                   <td>Gaji Pokok</td>
                   <td><?php
                   $gajiPokok = $u->gajiPokok;
-                  $absen = $u->absen;
-                  $gajiHarian = $gajiPokok / 22;
-                  $totalGaji = (($gajiHarian*$absen)-64000);
-                  echo rupiah($totalGaji);
-                  // $gajiPokok = $u->gajiPokok; $gajiPokok echo rupiah($gajiPokok)
+                  echo rupiah($gajiHarian = $gajiPokok / 22);
                    ?></td>
-                </tr>
+                </tr> -->
               </table>
               <h3>Potongan</h3>
               <table class="table table-bordered table-striped">
                 <tr>
-                  <td>BPJS</td>
+                  <th width="300">BPJS</th>
                   <td> - <?php $bpjs = 64000; echo rupiah($bpjs) ?> </td>
                 </tr>
               </table>
                 <hr>
               <table class="table table-bordered table-striped">
                 <tr>
-                  <th>Total Gaji </th>
+                  <th width="300">Total Gaji </th>
                   <th><?php
-                  $totalGaji = ($gajiPokok-$bpjs);
+                  $totalGaji = (($gajiHarian*$absen)-$bpjs);
                   echo rupiah($totalGaji); ?></th>
                 </tr>
               </table>

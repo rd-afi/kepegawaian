@@ -25,7 +25,8 @@
         <link href="<?php echo base_url('assets/template/dist/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css" />
         <!-- DataTables -->
         <!-- <link href="<?php echo base_url('assets/template/plugins/datatables/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet" type="text/css" /> -->
-        <link href="<?php echo base_url('assets/template/plugins/datatables/DataTables/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+        <!-- <link href="<?php echo base_url('assets/template/plugins/datatables/DataTables/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet" type="text/css" /> -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/template/plugins/datatables/datatables.min.css') ?>"/>
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link href="<?php echo base_url('assets/template/dist/css/skins/_all-skins.min.css') ?>" rel="stylesheet" type="text/css" />

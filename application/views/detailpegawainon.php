@@ -40,7 +40,7 @@ $this->load->view('template/sidebar');
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url(). 'datapegawai/report/' . $u->kdPegawai; ?>"><i class="glyphicon glyphicon-print"></i> Print</a>
+                      <a href="<?php echo base_url(). 'datapegawainon/print_detail/' . $u->kdPegawai; ?>" target="_blank"><i class="glyphicon glyphicon-print"></i> Print</a>
                     </li>
                   </ul>
               </div><!-- /btn-group -->

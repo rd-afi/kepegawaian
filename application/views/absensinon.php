@@ -78,7 +78,7 @@ $this->load->view('template/sidebar');
             </div>
             <div class="box-body">
               <?php
-              if ((get_monthnumber($bulan) > date('m')) && $tahun == date ('Y')) {
+              if ((get_monthnumber($bulan) >= date('m')) && $tahun == date ('Y')) {
                 $onoff = "disabled";
               } else if ((get_monthnumber($bulan) <= date('m')) || $tahun <= date('Y')){
                 $onoff = " ";

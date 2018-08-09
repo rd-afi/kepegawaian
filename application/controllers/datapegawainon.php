@@ -137,19 +137,25 @@ class datapegawainon extends CI_Controller {
 	}
 
 	function print_gaji($kdPegawai){
-		$where = array('kdPegawai' => $kdPegawai);
+		$where = array('pegawainon.kdPegawai' => $kdPegawai);
 		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
 		$this->load->view('printdetailgaji_nonP',$data);
+	}
+
+	function print_detail($kdPegawai){
+		$where = array('pegawainon.kdPegawai' => $kdPegawai);
+		$data['pegawai'] = $this->m_pegawainon->detail_data($where,'pegawainon')->result();
+		$this->load->view('printdetailpegawainon',$data);
 	}
 
 	function report($kdPegawai){
 		$this->load->library('pdf');
 
-		$where = array('kdPegawai' => $kdPegawai);
+		$where = array('pegawainon.kdPegawai' => $kdPegawai);
 		$data['pegawainon'] = $this->m_pegawainon->detail_gaji($where,'pegawainon')->result();
 
 		$this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "laporan.pdf";
-    $this->pdf->load_view('printdetailgaji_nonP', $data);
+    $this->pdf->load_view('printdetailpegawainon', $data);
 	}
 }

@@ -126,6 +126,7 @@ function add_absensi()
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
     $('.modal-title').text('Absensi'); // Set Title to Bootstrap modal title
+    reload_table();
 }
 
 // function edit_tunjangan(id)

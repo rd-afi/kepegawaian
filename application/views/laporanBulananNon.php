@@ -177,8 +177,13 @@ $this->load->view('template/foot');
     return rupiah;
    }
     $('#myTable').DataTable( {
-       "paging" : false,
-       "searching" : false,
+      dom: 'Brti',
+         buttons: [{ extend: 'copy', footer: true, title : 'Laporan Gaji Bulan <?php echo $bulan.' '.$tahun ?>'  },
+          { extend: 'excel', footer: true, title : 'Laporan Gaji Bulan <?php echo $bulan.' '.$tahun ?>'  },
+          { extend: 'pdf', footer: true, title : 'Laporan Gaji Bulan <?php echo $bulan.' '.$tahun ?>'  },
+          { extend: 'print', footer: true, title : 'Laporan Gaji Bulan <?php echo $bulan.' '.$tahun ?>' }],
+       // "paging" : false,
+       // "searching" : false,
        "footerCallback": function ( row, data, start, end, display ) {
            var api = this.api(), data;
 
